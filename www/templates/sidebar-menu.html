@@ -13,7 +13,7 @@
         	</a>
       </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-nav-view name="menuWorPress" animation="none"></ion-nav-view>
+    <ion-nav-view name="menuWorPress"></ion-nav-view>
   </ion-side-menu-content>
   <ion-side-menu side="left">
   	 <ion-header-bar class="bar bar-{{appColor}}">
@@ -21,30 +21,30 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <a   href="#news/home" class="item-icon-left">
+        <ion-item menu-close-keep-history href="#/news/home" class="item-icon-left">
         	<i class="icon ion-ios-home"></i>
           Home
-        </a>
-        <a   href="#news/send_invitation" class="item-icon-left">
+        </ion-item>
+        <ion-item menu-close-keep-history href="#/news/send_invitation" class="item-icon-left">
         	<i class="icon ion-paper-airplane"></i>
           Send Invitation
-		</a>
-        <a   href="#news/contact" class="item-icon-left">
+        </ion-item>
+        <ion-item menu-close-keep-history href="#/news/contact" class="item-icon-left">
         	<i class="icon ion-android-contacts"></i>
           Contacts
-       </a>
-        <a  href="#news/nearbycontacts" class="item-icon-left">
+        </ion-item>
+        <ion-item menu-close-keep-history href="#/news/nearbycontacts" class="item-icon-left">
         	<i class="icon ion-ios-location-outline"></i>
           Find Near By Contacts
         </ion-item>
-         <a class="menu-close-keep-history" href="#news/messages" class="item-icon-left">
+        <ion-item menu-close-keep-history href="#/news/messages" class="item-icon-left">
         	<i class="icon ion-email"></i>
           Messages
-       </a>
-        <a class="menu-close-keep-history" href="#news/logout" class="item-icon-left">
+        </ion-item>
+        <ion-item menu-close-keep-history href="#/news/logout" class="item-icon-left">
         	<i class="icon ion-log-out"></i>
           Logout
-        </a>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
