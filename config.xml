@@ -56,7 +56,7 @@
     <preference name="SplashScreenDelay" value="5000" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="LoadUrlTimeoutValue" value="50000" />
-	
+	<engine name="android" spec="^6.2.3" />
 
 
 
