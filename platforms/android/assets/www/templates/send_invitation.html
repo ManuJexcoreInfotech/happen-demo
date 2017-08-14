@@ -1,0 +1,34 @@
+<ion-view view-title="SEND INVITATION">
+    <ion-content padding="10">
+
+        <div class="list">
+            <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
+                <label class="item item-input">
+                    <h2 class="leftside">Name </h2>
+                    <input required type="email" class="inputbrd" ng-model="user.name" name="name" placeholder="Name" value="" form-validate-after>
+                </label>
+                <span ng-message class="warning-message-normal" ng-show="postForm.name.$error.required && postForm.name.$dirty">Required</span>
+
+                <label class="item item-input">
+                    <h2 class="leftside">Email </h2>
+                    <input required type="email" class="inputbrd" ng-model="user.email" name="email" placeholder="Email Address" value="" form-validate-after>
+                </label>
+                <span ng-message class="warning-message-normal" ng-show="postForm.email.$error.required && postForm.email.$dirty">Required</span>
+                <span ng-message class="warning-message-normal" ng-show="postForm.email.$error.email && postForm.email.$dirty">This is not a valid email.</span>
+                
+                <label class="item item-input">
+                    <h2 class="leftside">Group </h2>
+                    <input required ng-model="user.group" class="inputbrd" name="group" type="text" placeholder="Group" form-validate-after>
+                </label>
+                <span ng-message class="warning-message-normal" ng-show="postForm.group.$invalid && postForm.group.$dirty">Required</span>
+                <div class="padding"></div>
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-{{appColor}}"> Save </button>
+                </div>
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-dark"> Home </button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

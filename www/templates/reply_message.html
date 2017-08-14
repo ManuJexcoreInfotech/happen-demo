@@ -1,0 +1,20 @@
+<ion-view view-title="REPLY MESSAGE">
+    <ion-content padding="10">
+        <div class="list">
+            <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
+                <label class="item item-input">
+                    <textarea required ng-model="user.comments" rows="6" class="bg-textarea" name="comments" placeholder="Comments"></textarea>
+                </label>
+                <span ng-message class="warning-message-normal" ng-show="postForm.comments.$error.required && postForm.comments.$dirty">Required</span>
+
+                <div class="padding"></div>
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-{{appColor}}"> Reply </button>
+                </div>
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-dark"> Home </button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
