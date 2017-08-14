@@ -19,6 +19,7 @@
     
 	<icon src="res/icon/ios/app-icon-72.png" /> 
 	<splash src="res/screen/ios/splash-screen-320X480.png" />
+	<!-- IOS-->
 	<icon src="res/icon/ios/app-icon-180.png" plateform="ios" width="180" height="180" />
 	<icon src="res/icon/ios/app-icon-60.png" plateform="ios" width="60" height="60" />
 	<icon src="res/icon/ios/app-icon-120.png" plateform="ios" width="120" height="120" />
@@ -44,7 +45,17 @@
 	<splash src="res/screen/ios/splash-screen-1024X768.png" plateform="ios" width="1024" height="768" />
 	<splash src="res/screen/ios/splash-screen-1536X2048.png" plateform="ios" width="1536" height="2048" />
 	<splash src="res/screen/ios/splash-screen-2048X1536.png" plateform="ios" width="2048" height="1536" />
-		
+	<!-- IOS-->
+	<!-- ANDROID-->
+	<splash src="res/screen/android/splash-screen-320X480.png" plateform="android"	density="land-hdpi" />
+	<splash src="res/screen/android/splash-screen-640X960.png" plateform="android" density="land-ldpi" />
+	<splash src="res/screen/android/splash-screen-640X1136.png" plateform="android"  density="land-mdpi" />
+	<splash src="res/screen/android/splash-screen-750X1334.png" plateform="android"  density="land-xhdpi" />
+	<splash src="res/screen/android/splash-screen-1242X2208.png" plateform="android" density="port-hdpi" />
+	<splash src="res/screen/android/splash-screen-768X1024.png" plateform="android" density="port-ldpi" />
+	<splash src="res/screen/android/splash-screen-1024X768.png" plateform="android"  density="port-mdpi" />
+	<splash src="res/screen/android/splash-screen-1536X2048.png" plateform="android"  density="port-xhdpi" />
+	<!-- ANDROID-->
 	<feature name="File">
 		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
 	</feature>

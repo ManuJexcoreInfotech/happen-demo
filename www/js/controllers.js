@@ -65,7 +65,7 @@ app.controller('NewsCtrl', ['$scope', '$state', '$ionicSlideBoxDelegate','Color'
 	$scope.userId = $localstorage.get('user_id');
 	$scope.locPath = $location.path();
   	// Toggle left function for app sidebar
-  	$scope.toggleLeft = function() {
+  	$scope.toggleLeft = function() {	
     	$ionicSideMenuDelegate.toggleLeft();
   	};
 	console.log($location.path());
