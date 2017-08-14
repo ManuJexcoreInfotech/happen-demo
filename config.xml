@@ -8,105 +8,77 @@
         Domonkos Pal
     </author>
     <content src="www/index.html" />
+	
     <icon src="res/icon/app-icon-72.png" /> 
-	
-	
-    <!-- iPhone 6 / 6+ -->
-    <icon src="res/icon/app-icon-180.png" platform="ios" width="180" height="180" />
-
-    <!-- iPhone / iPod Touch  -->
-    <icon src="res/icon/app-icon-60.png" platform="ios" width="60" height="60" />
-    <icon src="res/icon/app-icon-120.png" platform="ios" width="120" height="120" />
-
-    <!-- iPad -->
-    <icon src="res/icon/app-icon-76.png" platform="ios" width="76" height="76" />
-    <icon src="res/icon/app-icon-152.png" platform="ios" width="152" height="152" />
-
-    <!-- Settings Icon -->
-    <icon src="res/icon/app-icon-29.png" platform="ios" width="29" height="29" />
-    <icon src="res/icon/app-icon-58.png" platform="ios" width="58" height="58" />
-
-    <!-- Spotlight Icon -->
-    <icon src="res/icon/app-icon-40.png" platform="ios" width="40" height="40" />
-    <icon src="res/icon/app-icon-80.png" platform="ios" width="80" height="80" />
-
-
-    <!-- iPhone / iPod Touch -->
-    <icon src="res/icon/app-icon-57.png" platform="ios" width="57" height="57" />
-    <icon src="res/icon/app-icon-114.png" platform="ios" width="114" height="114" />
-
-    <!-- iPad -->
-    <icon src="res/icon/app-icon-72.png" platform="ios" width="72" height="72" />
-    <icon src="res/icon/app-icon-144.png" platform="ios" width="144" height="144" />
-
-
-    <!-- iPad Spotlight and Settings Icon -->
-    <icon src="res/icon/app-icon-50.png" platform="ios" width="50" height="50" />
-    <icon src="res/icon/app-icon-100.png" platform="ios" width="100" height="100" />
-    
     <splash src="res/splash/splash-screen-640X960.png" />
- 
-    <splash src="res/splash/splash-screen-2048X1536.png" platform="android" qualifier="ldpi" />
-    <splash src="res/splash/splash-screen-640X960.png" platform="android" qualifier="mdpi" />
-    <splash src="res/splash/splash-screen-640X960.png" platform="android" qualifier="hdpi" />
-    <splash src="res/splash/splash-screen-640X960.png" platform="android" qualifier="xhdpi" />
 
-    <!-- iPhone and iPod touch -->
-    <splash src="res/splash/splash-screen-320X480.png" platform="ios" width="320" height="480" />
-    <splash src="res/splash/splash-screen-640X960.png" platform="ios" width="640" height="960" />
+    <platform name="android">
+		<!-- you can use any density that exists in the Android project -->
+		<splash src="res/screen/android/splash-screen-320X480.png" density="land-hdpi"/>
+		<splash src="res/screen/android/splash-screen-640X960.png" density="land-ldpi"/>
+		<splash src="res/screen/android/splash-screen-640X960.png" density="land-mdpi"/>
+		<splash src="res/screen/android/splash-screen-320X480.png" density="land-xhdpi"/>
+	 
+		<splash src="res/screen/android/splash-screen-640X960.png" density="port-hdpi"/>
+		<splash src="res/screen/android/splash-screen-640X960.png" density="port-ldpi"/>
+		<splash src="res/screen/android/splash-screen-640X960.png" density="port-mdpi"/>
+		<splash src="res/screen/android/splash-screen-640X960.png" density="port-xhdpi"/>
+	</platform>
+	 
+	<platform name="ios">
+		<icon src="res/icon/ios/app-icon-180.png" " width="180" height="180" />
+		<icon src="res/icon/ios/app-icon-60.png" " width="60" height="60" />
+		<icon src="res/icon/ios/app-icon-120.png" " width="120" height="120" />
+		<icon src="res/icon/ios/app-icon-76.png" " width="76" height="76" />
+		<icon src="res/icon/ios/app-icon-152.png" " width="152" height="152" />
+		<icon src="res/icon/ios/app-icon-29.png" " width="29" height="29" />
+		<icon src="res/icon/ios/app-icon-58.png" " width="58" height="58" />
+		<icon src="res/icon/ios/app-icon-40.png" " width="40" height="40" />
+		<icon src="res/icon/ios/app-icon-80.png" " width="80" height="80" />
+		<icon src="res/icon/ios/app-icon-57.png" " width="57" height="57" />
+		<icon src="res/icon/ios/app-icon-114.png" " width="114" height="114" />
+		<icon src="res/icon/ios/app-icon-72.png" " width="72" height="72" />
+		<icon src="res/icon/ios/app-icon-144.png" " width="144" height="144" />
 
-    <!-- iPhone 5 / iPod Touch (5th Generation) -->
-    <splash src="res/splash/splash-screen-640X1136.png" platform="ios" width="640" height="1136" />
-
-    <!-- iPhone 6 -->
-    <splash src="res/splash/splash-screen-750X1334.png" platform="ios" width="750" height="1334" />
-    <splash src="res/splash/splash-screen-1242X2208.png" platform="ios" width="1242" height="2208" />
-
-    <!-- iPad -->
-    <splash src="res/splash/splash-screen-768X1024.png" platform="ios" width="768" height="1024" />
-    <splash src="res/splash/splash-screen-1024X768.png" platform="ios" width="1024" height="768" />
-
-    <!-- Retina iPad -->
-    <splash src="res/splash/splash-screen-1536X2048.png" platform="ios" width="1536" height="2048" />
-    <splash src="res/splash/splash-screen-2048X1536.png" platform="ios" width="2048" height="1536" />
-   
-    
-
-    <content src="index.html" />
+		<icon src="res/icon/ios/app-icon-50.png" " width="50" height="50" />
+		<icon src="res/icon/ios/app-icon-100.png" " width="100" height="100" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" " width="320" height="480" />
+		<splash src="res/screen/ios/splash-screen-640X960.png" " width="640" height="960" />
+		<splash src="res/screen/ios/splash-screen-640X1136.png" " width="640" height="1136" />
+		<splash src="res/screen/ios/splash-screen-750X1334.png" " width="750" height="1334" />
+		<splash src="res/screen/ios/splash-screen-1242X2208.png" " width="1242" height="2208" />
+		<splash src="res/screen/ios/splash-screen-768X1024.png" " width="768" height="1024" />
+		<splash src="res/screen/ios/splash-screen-1024X768.png" " width="1024" height="768" />
+		<splash src="res/screen/ios/splash-screen-1536X2048.png" " width="1536" height="2048" />
+		<splash src="res/screen/ios/splash-screen-2048X1536.png" " width="2048" height="1536" />
+		
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		<splash src="res/screen/ios/splash-screen-320X480.png" />
+		
+	</platform>
 	
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-    </feature>
-   
-    <preference name="android-build-tool" value="gradle" />
-	<plugin name="phonegap-plugin-push" spec="~1.4.5" source="npm">
-		<param name="SENDER_ID" value="684191859302" />
-    </plugin>
+	<platform name="browser">
+		<preference name="SplashScreen" value="res/screen/ios/splash-screen-320X480.png" /> <!-- defaults to "/img/logo.png" -->
+		<preference name="SplashScreenDelay" value="3000" /> <!-- defaults to "3000" -->
+		<preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
+		<preference name="ShowSplashScreen" value="false" /> <!-- defaults to "true" -->
+		<preference name="SplashScreenWidth" value="600" /> <!-- defaults to "170" -->
+		<preference name="SplashScreenHeight" value="300" /> <!-- defaults to "200" -->
+	</platform>
+	 
+	<!-- Configuration using MRT concept (Recommended, see "Windows-specific information" section for details): -->
+	<platform name="windows">
+		<splash src="res/screen/windows/splash-screen-320X480.png" target="SplashScreen"/>
+		<splash src="res/screen/windows/splash-screen-320X480.png" target="SplashScreenPhone"/>
+	</platform>
 	
-      <plugin name="cordova-plugin-device" source="npm" />
-    <plugin name="cordova-plugin-geolocation" source="npm" />
-    <plugin name="cordova-plugin-network-information" source="npm"  />
-    <plugin name="cordova-plugin-whitelist" source="npm"/>
-    <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-  
-    <preference name="android-build-tool" value="gradle" />
-<plugin name="phonegap-plugin-push" spec="~1.4.5" source="npm">
-        <param name="SENDER_ID" value="684191859302" />
-    </plugin>
-	
-    <preference name="orientation" value="portrait" />
-
-    <preference name="android-build-tool" value="gradle" />
-
-    <preference name="permissions" value="none"/>
-	
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    	<preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="5000" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="LoadUrlTimeoutValue" value="50000" />
-	<plugin name="org.apache.cordova.splashscreen"  />
-
+	<preference name="AutoHideSplashScreen" value="true" />
+	<preference name="SplashScreenDelay" value="3000" />
+	<preference name="FadeSplashScreenDuration" value="750"/>
 
 
 
