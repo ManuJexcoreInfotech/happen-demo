@@ -1,0 +1,11 @@
+<ion-content padding="10">
+    <div class="list">
+        <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
+            <label class="item item-input">
+                <textarea required ng-model="data.message" rows="6" class="bg-textarea" name="comments" placeholder="Comments"></textarea>
+            </label>
+            <span ng-message class="warning-message-normal" ng-show="postForm.comments.$error.required && postForm.comments.$dirty">Required</span>
+            <div class="padding"></div>
+        </form>
+    </div>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-view>
+    <ion-nav-title>
+        <img class="title-image" src="img/logo.png" />
+    </ion-nav-title>
+    <ion-content padding="10">
+        <div class="padding"></div>
+        <!--ng-repeat="item in items"--> 
+        <div> 
+            <ion-list class="messageList">
+                <ion-item ng-repeat="data in messages">
+                    <a href="#/app/reply_message?msg_id={{data.msg_id}}" ><h2 class=" " ng-class="data.msg_status == 0 && 'read' || 'unread'"> {{data.u_username| capitalize}}</h2></a>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="padding"></div>
+
+        <div class="padding onebtncss text-center marginleft25">
+            <a href="#app/home" class="button button-block button-dark" ng-click=""> Home </a>
+        </div>
+    </ion-content>
+</ion-view>

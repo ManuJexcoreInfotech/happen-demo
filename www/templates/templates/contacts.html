@@ -1,0 +1,33 @@
+<ion-view view-title="CONTACTS">
+    <ion-nav-title>
+        <img class="title-image" src="img/logo.png" />
+    </ion-nav-title>
+    <ion-content padding="10">
+        <div class="padding"></div>
+        <form method="post" class="invtform" ng-submit="" name="postForm" novalidate>
+        <!--ng-repeat="item in items"--> 
+        <div class="contact-table"> 
+            <div class="row" ng-repeat="data in contacts">
+                <div class="col">{{data.inv_name}}</div>
+                <div class="col">{{data.inv_email}}</div>
+                <div class="col">{{data.g_name}}</div>
+                <div class="col">
+                    <div class="checkboxFour">
+                        <input type="checkbox" ng-true-value="{{data.inv_rec_u_id}}" ng-false-value="" id="checkboxFourInput{{data.inv_id}}" ng-model="user[$index]" name="userid[]" />
+                        <label for="checkboxFourInput{{data.inv_id}}"></label>
+                       
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="padding"></div>
+        <div class="padding onebtncss">
+            <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendMessage()"> Send </button>
+        </div>
+        <div class="padding onebtncss">
+            <button type="submit" class="button button-block button-dark"> Home </button>
+        </div>
+        </form>
+    </ion-content>
+</ion-view>
