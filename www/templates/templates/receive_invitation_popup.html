@@ -15,8 +15,14 @@
             <label class="item item-input">
                 <h2 class="leftside">Group </h2>
                 <select name="group_id" required  ng-model="user.group_id" class="inputbrd" >
-                    <option ng-repeat="x in groups" value="{{x.g_id}}" ng-selected="x.g_id == group">{{x.g_name}}</option>
+                    <option  value="{{group}}" ng-selected="group!=''" >{{group}}</option>
+                    <option ng-repeat="x in groups"  value="{{x.g_name}}">{{x.g_name}}</option>
+                    <option value="1">Add New Group</option>
                 </select>
+            </label>
+            <label class="item item-input" ng-if="user.group_id == 1">
+                <h2 class="leftside"> </h2>
+                <input  ng-model="user.group" class="inputbrd" name="group"  type="text" placeholder="Group Name" form-validate-after>
             </label>
             <span ng-message class="warning-message-normal" ng-show="postForm.group_id.$invalid && postForm.group.$dirty">Required</span>
             <div class="padding"></div>

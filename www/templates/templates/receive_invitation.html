@@ -11,7 +11,7 @@
                 <div class="col">Action</div>
             </div>-->
             <div class="row" ng-repeat="data in invite">
-                <div class="col">From <b>{{data.inv_name}}</b>   ({{data.g_name}})</div>
+                <div class="col">From <b>{{data.inv_name}}</b>   ({{data.inv_group}})</div>
                 <!--<div class="col">{{data.g_name}}</div>-->
                 <div class="col">
                     <button class="button button-small button-primary" ng-click="acceptInvitation(data.inv_id, data.inv_group)">Accept</button>

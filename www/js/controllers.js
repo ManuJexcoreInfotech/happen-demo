@@ -525,7 +525,10 @@ angular.module('app.controllers', [])
 
                 if (isValid) {
                     $scope.showLoading();
+                    if ($scope.user.group_id == 1)
+                        $scope.user.group_id = $scope.user.group;
                     $scope.user.userid = getStorage('user_id');
+
                     $rootScope.service.post('sendInvitation', $scope.user, function (res) {
                         $scope.hideLoading();
                         if (res.status == 1) {
@@ -577,6 +580,9 @@ angular.module('app.controllers', [])
                                     if (!$scope.user.group_id) {
                                         $scope.user.group_id = group_id;
                                     }
+                                    if ($scope.user.group_id == 1){
+                                        $scope.user.group_id = $scope.user.group;
+                                    }
                                     $scope.showLoading();
                                     $scope.user.u_id = getStorage('user_id');
                                     $rootScope.service.post('acceptInvitation', $scope.user, function (res) {
@@ -617,7 +623,7 @@ angular.module('app.controllers', [])
                             text: '<b>Yes</b>',
                             type: 'button-positive',
                             onTap: function (e) {
-                              
+
                                 $scope.showLoading();
                                 $scope.user.u_id = getStorage('user_id');
                                 $rootScope.service.post('ignoreInvitation', $scope.user, function (res) {
@@ -631,7 +637,7 @@ angular.module('app.controllers', [])
                                         alert(res.message);
                                     }
                                 });
-                               
+
 
                             }
                         },
