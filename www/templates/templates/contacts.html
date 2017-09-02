@@ -6,11 +6,11 @@
         <div class="padding"></div>
         <form method="post" class="invtform" ng-submit="" name="postForm" novalidate>
         <!--ng-repeat="item in items"--> 
-        <div class="contact-table"> 
+        <div class="contact-table" style="max-height:{{height}}px"> 
             <div class="row" ng-repeat="data in contacts">
                 <div class="col">{{data.inv_name}}</div>
                 <div class="col">{{data.inv_email}}</div>
-                <div class="col">{{data.g_name}}</div>
+                <div class="col">{{data.inv_group}}</div>
                 <div class="col">
                     <div class="checkboxFour">
                         <input type="checkbox" ng-true-value="{{data.inv_rec_u_id}}" ng-false-value="" id="checkboxFourInput{{data.inv_id}}" ng-model="user[$index]" name="userid[]" />

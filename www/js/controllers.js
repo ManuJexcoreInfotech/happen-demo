@@ -63,7 +63,7 @@ angular.module('app.controllers', [])
 
             //首次欢迎页
 
-
+             $scope.height = window.screen.height - 160;
             // 登录
             $scope.showLogin = function () {
                 $scope.user = {};
@@ -98,6 +98,7 @@ angular.module('app.controllers', [])
                                     }
                                     $scope.user = res;
                                     setStorage('user_id', res.id);
+                                    
                                     Config.setRememberme($scope.loginData.rememberme);
                                     if ($scope.loginData.rememberme) {
                                         Config.setUsername($scope.loginData.username);
@@ -461,6 +462,7 @@ angular.module('app.controllers', [])
             $rootScope.service.post('getContacts', $scope.data, function (res) {
                 $scope.contacts = angular.fromJson(res.result);
             });
+            
 
             $scope.sendMessage = function () {
 
