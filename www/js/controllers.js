@@ -63,7 +63,7 @@ angular.module('app.controllers', [])
 
             //首次欢迎页
 
-             $scope.height = window.screen.height - 160;
+            $scope.height = window.screen.height - 160;
             // 登录
             $scope.showLogin = function () {
                 $scope.user = {};
@@ -98,7 +98,7 @@ angular.module('app.controllers', [])
                                     }
                                     $scope.user = res;
                                     setStorage('user_id', res.id);
-                                    
+
                                     Config.setRememberme($scope.loginData.rememberme);
                                     if ($scope.loginData.rememberme) {
                                         Config.setUsername($scope.loginData.username);
@@ -456,16 +456,105 @@ angular.module('app.controllers', [])
         .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
 
             $scope.data = {};
-            $scope.data.u_id = getStorage('user_id');
+            var UserId = getStorage('user_id');
+            $scope.data.u_id = UserId;
             $scope.user = {};
             $scope.contacts = {};
             $rootScope.service.post('getContacts', $scope.data, function (res) {
                 $scope.contacts = angular.fromJson(res.result);
             });
-            
-            $scope.alert = function(){
-                alert(134);
+
+            /* Delete Contact */
+            $scope.deleteContact = function (inv_id) {
+                var myPopup = $ionicPopup.show({
+                    template: '<h4>Are You want to sure to delete this contact ?</h4>',
+                    title: 'Delete Contact',
+                    cssClass: "normal",
+                    scope: $scope,
+                    buttons: [
+                        {text: 'Cancel'},
+                        {
+                            text: '<b>Yes</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+                                $scope.showLoading();
+                                $scope.user.inv_id = inv_id;
+                                $rootScope.service.post('deleteContact', $scope.user, function (res) {
+                                    $scope.hideLoading();
+                                    if (res.status == 1) {
+                                        alert(res.message);
+                                        $rootScope.service.post('getContacts', $scope.data, function (res) {
+                                            $scope.contacts = angular.fromJson(res.result);
+                                        });
+                                        $state.go($state.current, {}, {reload: true});
+                                    } else
+                                    {
+                                        $scope.valid = 0;
+                                        alert(res.message);
+                                    }
+                                });
+
+
+                            }
+                        },
+                    ]
+                });
+            };
+            /* Delete Contact */
+
+            /* Get Invitation detail*/
+            $scope.invitation = {};
+            $scope.editInvitation = function (id) {
+                $scope.groups = [];
+                $rootScope.service.post('groupList', $scope.user, function (res) {
+                    $scope.groups = res.result;
+                });
+                $rootScope.service.post('getContactDetail', {inv_id: id, user_id: UserId}, function (res) {
+                    $scope.invitation = res.result;
+
+                    /*Edit Invitaion Detail */
+                    var myPopup = $ionicPopup.show({
+                        templateUrl: 'templates/templates/edit_contact_popup.html',
+                        title: 'Edit Contact',
+                        scope: $scope,
+                        buttons: [
+                            {text: 'Cancel'},
+                            {
+                                text: '<b>Update</b>',
+                                type: 'button-positive',
+                                onTap: function (e) {
+
+                                    $scope.showLoading();
+                                    $scope.user.u_id = getStorage('user_id');
+                                    $rootScope.service.post('updateContact', $scope.invitation, function (res) {
+                                        $scope.hideLoading();
+
+                                        if (res.status == 1) {
+                                            $rootScope.service.post('getContacts', $scope.data, function (res) {
+                                                $scope.contacts = angular.fromJson(res.result);
+                                            });
+                                            alert(res.message);
+                                            $state.go($state.current, {}, {reload: true});
+
+                                        } else
+                                        {
+                                            $scope.valid = 0;
+                                            alert(res.message);
+                                        }
+                                    });
+                                    if ($scope.valid == 0)
+                                        e.preventDefault();
+
+                                }
+                            },
+                        ]
+                    });
+
+
+
+                });
             }
+            /*Edit Invitaion Detail */
 
             $scope.sendMessage = function () {
 
@@ -525,6 +614,7 @@ angular.module('app.controllers', [])
             });
 
             $scope.user = {};
+            $scope.Onsubmit = false;
 
             $scope.submitForm = function (isValid) {
 
@@ -544,7 +634,10 @@ angular.module('app.controllers', [])
                             alert(res.message);
                         }
                     });
+                } else {
+                     $scope.Onsubmit= true;
                 }
+                
             }
         })
 
@@ -585,7 +678,7 @@ angular.module('app.controllers', [])
                                     if (!$scope.user.group_id) {
                                         $scope.user.group_id = group_id;
                                     }
-                                    if ($scope.user.group_id == 1){
+                                    if ($scope.user.group_id == 1) {
                                         $scope.user.group_id = $scope.user.group;
                                     }
                                     $scope.showLoading();
