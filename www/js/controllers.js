@@ -463,6 +463,9 @@ angular.module('app.controllers', [])
                 $scope.contacts = angular.fromJson(res.result);
             });
             
+            $scope.alert = function(){
+                alert(134);
+            }
 
             $scope.sendMessage = function () {
 

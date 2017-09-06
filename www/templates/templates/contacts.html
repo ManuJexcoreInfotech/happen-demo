@@ -7,7 +7,7 @@
         <form method="post" class="invtform" ng-submit="" name="postForm" novalidate>
         <!--ng-repeat="item in items"--> 
         <div class="contact-table" style="max-height:{{height}}px"> 
-            <div class="row" ng-repeat="data in contacts">
+            <div on-hold="alert()" class="row" ng-repeat="data in contacts">
                 <div class="col">{{data.inv_name}}</div>
                 <div class="col">{{data.inv_email}}</div>
                 <div class="col">{{data.inv_group}}</div>
