@@ -3,7 +3,7 @@
         <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
             <label class="item item-input">
                 <h2 class="leftside">UserId </h2>
-                <input required type="text" class="inputbrd" ng-model="user.username" readonly name="username"  placeholder="User Id" value="From {{user.username}}  " form-validate-after>
+                <input required type="text" class="inputbrd" ng-model="user.username" name="username"  placeholder="User Id" value="From {{user.username}}  " form-validate-after>
             </label>
             <span ng-message class="warning-message-normal" ng-show="postForm.username.$error.required && postForm.username.$dirty">Required</span>
             <label class="item item-input">
