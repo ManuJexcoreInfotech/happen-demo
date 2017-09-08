@@ -19,13 +19,13 @@ angular.module('app', [
                     $rootScope.model = device.model;
                     $rootScope.platform = device.platform;
                     $rootScope.uuid = device.uuid;
-                    var type= 0;
-                    if(device.platform === "ios")
+                    var type = 0;
+                    if (device.platform === "ios")
                     {
-                        type=1;
+                        type = 1;
                     }
                     $rootScope.service.post('mobileRegister', {device_id: device.uuid, device_type: type}, function (res) {
-                           console.log(res)
+                        console.log(res)
                     });
                 });
 
@@ -41,6 +41,7 @@ angular.module('app', [
             $rootScope.backHome = function () {
 
             }
+
             Service($rootScope, $http, $ionicPopup);
         })
         .constant("Config", {
@@ -298,6 +299,18 @@ angular.module('app', [
             return function (input) {
                 return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
             }
+        })
+        .factory('myService', function ($rootScope,$scope) {
+
+            $scope.sessionData = {};
+            $scope.sessionData.user_id = getStorage('user_id');
+            $rootScope.service.post('getUser', $scope.sessionData, function (user) {
+                $scope.user = typeof user.result === 'object' ? user.result : null;
+                setStorage('username', user.result.u_username);
+                $scope.invite = user.invite;
+                $scope.notification = user.message;
+            });
+
         })
         .directive('onFinishRender', function ($timeout) {
             return {

@@ -1,3 +1,4 @@
+
 /* importing fonts */
 @font-face {
     font-family: "FuturaBT-Book";
@@ -326,7 +327,7 @@ h2.unread{color:#fff!important;}
     height: auto !important;
 }
 
-.contact-table{ max-height:80%;overflow:scroll;}
+.contact-table{ max-height:80%;overflow:scroll;padding:0 2%;}
 .contact-table .row{ padding:0 10px}
 .contact-table .row .col{background:#fff;}
 .contact-table .row:hover .col{background:#acd435;color:#fff;}
@@ -541,4 +542,9 @@ select option:empty { display:none }
     color: #fff; }
 .vertical-align{
     vertical-align: middle!important;
+}
+.popup-buttons .button-small{
+    min-height:30px!important;
+    max-height:30px!important;
+    
 }

@@ -146,11 +146,13 @@ angular.module('app.controllers', [])
                 $scope.sessionData.user_id = getStorage('user_id');
                 $rootScope.service.post('getUser', $scope.sessionData, function (user) {
                     $scope.user = typeof user.result === 'object' ? user.result : null;
-                    setStorage('username', user.result.u_username);
+                    setStorage('\
+', user.result.u_username);
                     $scope.invite = user.invite;
                     $scope.notification = user.message;
                 });
             };
+            $rootScope.getUser= $scope.getUser();
             $scope.getUser();
             if (!$scope.user) {
                 $scope.autoLogin();
@@ -166,6 +168,7 @@ angular.module('app.controllers', [])
                 $scope.showLoading();
                 //$rootScope.service.get('logout', $scope.getUser);
                 removeStorage('user_id');
+                removeStorage('username');
                 Config.setUsername('');
                 Config.setPassword('');
                 $timeout($scope.hideLoading(), 1000);
@@ -354,11 +357,10 @@ angular.module('app.controllers', [])
                 });
             };
             $scope.submitForm = function (isValid) {
-                $scope.showLoading();
+                
 
                 if (isValid) {
-
-
+                    $scope.showLoading();
                     $rootScope.service.post('register', $scope.user, function (res) {
                         $scope.hideLoading();
                         if (res.status == 1) {
@@ -649,6 +651,7 @@ angular.module('app.controllers', [])
                 $scope.invite = typeof data.result === 'object' ? data.result : null;
 
             });
+           var inv_username = $scope.invite.u_name;
 
             /* Accept Inviation  */
             $scope.acceptInvitation = function (inv_id, group_id) {
@@ -657,7 +660,7 @@ angular.module('app.controllers', [])
                     $scope.groups = angular.fromJson(res.result);
                 });
                 $scope.user = {};
-                $scope.user.username = getStorage('username');
+                $scope.user.username = inv_username;
                 $scope.user.inv_id = inv_id;
                 $scope.group = group_id;
                 $scope.valid = 1;
@@ -666,10 +669,10 @@ angular.module('app.controllers', [])
                     title: 'Accept Invitation',
                     scope: $scope,
                     buttons: [
-                        {text: 'Cancel'},
+                        {text: 'Cancel',type:"button-small"},
                         {
                             text: '<b>Accept</b>',
-                            type: 'button-positive',
+                            type: 'button-positive button-small',
                             onTap: function (e) {
                                 if (!$scope.user.code) {
                                     e.preventDefault();
@@ -688,6 +691,7 @@ angular.module('app.controllers', [])
 
                                         if (res.status == 1) {
                                             alert(res.message);
+                                             
                                             $state.go($state.current, {}, {reload: true});
 
                                         } else
