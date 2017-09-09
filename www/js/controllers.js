@@ -461,6 +461,7 @@ angular.module('app.controllers', [])
             var UserId = getStorage('user_id');
             $scope.data.u_id = UserId;
             $scope.user = {};
+            $scope.userId = UserId;
             $scope.contacts = {};
             $rootScope.service.post('getContacts', $scope.data, function (res) {
                 $scope.contacts = angular.fromJson(res.result);
@@ -508,12 +509,17 @@ angular.module('app.controllers', [])
             $scope.invitation = {};
             $scope.editInvitation = function (id) {
                 $scope.groups = [];
+				
                 $rootScope.service.post('groupList', $scope.user, function (res) {
                     $scope.groups = res.result;
                 });
                 $rootScope.service.post('getContactDetail', {inv_id: id, user_id: UserId}, function (res) {
                     $scope.invitation = res.result;
-
+                    if (UserId !== $scope.invitation.inv_u_id)
+                    {
+                        $scope.invitation.inv_name = $scope.invitation.inv_r_name;
+                        $scope.invitation.inv_group = $scope.invitation.inv_r_group;
+                    }
                     /*Edit Invitaion Detail */
                     var myPopup = $ionicPopup.show({
                         templateUrl: 'templates/templates/edit_contact_popup.html',
@@ -527,7 +533,7 @@ angular.module('app.controllers', [])
                                 onTap: function (e) {
 
                                     $scope.showLoading();
-                                    $scope.user.u_id = getStorage('user_id');
+                                    $scope.invitation.u_id = getStorage('user_id');
                                     $rootScope.service.post('updateContact', $scope.invitation, function (res) {
                                         $scope.hideLoading();
 
