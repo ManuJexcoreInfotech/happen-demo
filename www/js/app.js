@@ -92,6 +92,7 @@ angular.module('app', [
                         controller: 'AppCtrl'
                     })
                     .state('app.home', {
+                        cache: false,
                         url: '/home', //首页
                         views: {
                             'menuContent': {
@@ -202,8 +203,8 @@ angular.module('app', [
                     })
 
                     .state('app.send_invitation', {
-                        url: "/send_invitation",
                         cache: false,
+                        url: "/send_invitation",
                         views: {
                             'menuContent': {
                                 templateUrl: "templates/templates/send_invitation.html",
@@ -212,8 +213,8 @@ angular.module('app', [
                         }
                     })
                     .state('app.receive_invitation', {
-                        url: "/receive_invitation",
                         cache: false,
+                        url: "/receive_invitation",
                         views: {
                             'menuContent': {
                                 templateUrl: "templates/templates/receive_invitation.html",
@@ -300,7 +301,7 @@ angular.module('app', [
                 return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
             }
         })
-        .factory('myService', function ($rootScope,$scope) {
+        .factory('myService', function ($rootScope, $scope) {
 
             $scope.sessionData = {};
             $scope.sessionData.user_id = getStorage('user_id');

@@ -146,8 +146,7 @@ angular.module('app.controllers', [])
                 $scope.sessionData.user_id = getStorage('user_id');
                 $rootScope.service.post('getUser', $scope.sessionData, function (user) {
                     $scope.user = typeof user.result === 'object' ? user.result : null;
-                    setStorage('\
-', user.result.u_username);
+                    setStorage('username', user.result.u_username);
                     $scope.invite = user.invite;
                     $scope.notification = user.message;
                 });
