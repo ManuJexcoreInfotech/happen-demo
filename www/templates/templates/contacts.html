@@ -17,7 +17,7 @@
                     <div   ng-repeat="data in contacts">
                         <div class="row " on-hold='editInvitation(data.inv_id)'>
                             <div class="col" >{{data.inv_u_id == userId && data.inv_name||  data.inv_r_name}}</div>
-                            <div class="col">{{data.inv_u_id == userId && data.send_email||  data.rec_email}}</div>
+                            <div class="col">{{data.inv_u_id == userId && data.rec_email||  data.send_email}}</div>
                             <div class="col">{{data.inv_u_id == userId && data.inv_group||  data.inv_r_group}}</div>
                             <div class="col" style="min-width:50px;max-width:50px;">
                                 <div class="checkboxFour">
