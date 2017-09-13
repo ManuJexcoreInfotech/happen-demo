@@ -295,11 +295,7 @@ angular.module('app.controllers', [])
 
         }
         $scope.user = {};
-        if (Config.getRememberme()) {
-            $scope.user.rememberme = true;
-            $scope.user.username = Config.getUsername();
-            $scope.user.password = Config.getPassword();
-        }
+        
 
 
         $scope.submitForm = function(isValid) {
