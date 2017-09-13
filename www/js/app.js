@@ -25,7 +25,7 @@ angular.module('app', [
                         type = 1;
                     }
                     $rootScope.service.post('mobileRegister', {device_id: device.uuid, device_type: type}, function (res) {
-                        console.log(res)
+                        //console.log(res)
                     });
                 });
 
@@ -66,7 +66,7 @@ angular.module('app', [
         })
         // push notification
         .constant("PushNoti", {
-            "senderID": "senderID",
+            "senderID": "871704003795",
         })
         .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $provide) {
             $ionicConfigProvider.backButton.text('').icon('ion-chevron-left');
