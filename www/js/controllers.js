@@ -215,7 +215,7 @@ angular.module('app.controllers', [])
         }
         $scope.invitation = function() {
 
-            $scope.showLoading();
+            /* $scope.showLoading();
             $scope.data = {};
             $scope.sessionData.u_id = getStorage('user_id');
 
@@ -239,7 +239,7 @@ angular.module('app.controllers', [])
                     ]
                 });
 
-            });
+            }); */
 
 
         }
