@@ -28,6 +28,7 @@ angular.module('app', [
                         //console.log(res)
                     });
                 });
+                
 
                 // Hide the accessory bar by default
 //                if (window.cordova && window.cordova.plugins.Keyboard) {
