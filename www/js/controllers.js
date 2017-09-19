@@ -520,9 +520,10 @@ angular.module('app.controllers', [])
             $scope.invitation = {};
             $scope.editInvitation = function (id) {
                 $scope.groups = [];
-
+               
+                $scope.user.u_id = getStorage('user_id');
                 $rootScope.service.post('groupList', $scope.user, function (res) {
-                    $scope.groups = res.result;
+                    $scope.groups = angular.fromJson(res.result);
                 });
                 $rootScope.service.post('getContactDetail', {inv_id: id, user_id: UserId}, function (res) {
                     $scope.invitation = res.result;
@@ -543,6 +544,8 @@ angular.module('app.controllers', [])
                                 onTap: function (e) {
 
                                     $scope.showLoading();
+                                    if ($scope.invitation.inv_group == 1)
+                                        $scope.invitation.inv_group = $scope.invitation.group;
                                     $scope.invitation.u_id = getStorage('user_id');
                                     $rootScope.service.post('updateContact', $scope.invitation, function (res) {
                                         $scope.hideLoading();
