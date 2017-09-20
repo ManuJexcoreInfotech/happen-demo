@@ -328,7 +328,7 @@ h2.unread{color:#fff!important;}
 }
 
 .contact-table{ max-height:80%;overflow:scroll;padding:0 2%;}
-.contact-table .row{ padding:0 10px}
+.contact-table .row{ padding:0 0px}
 .contact-table .row .col{background:#fff;}
 .contact-table .row:hover .col{background:#acd435;color:#fff;}
 .contact-table .row .col{max-width:142px;min-width: 64px;}
