@@ -21,17 +21,23 @@ angular.module('app.controllers', [])
             });
 
 
+				var posOptions = {timeout: 10000, enableHighAccuracy: false};
+                $cordovaGeolocation
+                        .getCurrentPosition(posOptions)
+                        .then(function (position) {
+                            $scope.dat.latitude = position.coords.latitude;
+                            $scope.dat.longitude = position.coords.longitude;
+                            $scope.showLoading();
+                            $rootScope.service.post('updateLocation', $scope.dat, function (res) {
+                                $scope.hideLoading();
+                                if (res.status == 1) {
+                                    //alert("Your Location Publish Successfully.;")
+                                }
+                            });
 
-            var posOptions = {timeout: 10000, enableHighAccuracy: false};
-            $cordovaGeolocation
-                    .getCurrentPosition(posOptions)
-                    .then(function (position) {
-                        var lat = position.coords.latitude
-                        var long = position.coords.longitude
-                        console.log(position.coords);
-                    }, function (err) {
-                        console.log(err);
-                    });
+                        }, function (err) {
+                            console.log(err);
+                        });
 
             $scope.dynamic_menus = {};
             $scope.appColor = Color.AppColor;
