@@ -479,7 +479,9 @@ angular.module('app.controllers', [])
             $scope.user = {};
             $scope.userId = UserId;
             $scope.contacts = {};
+            $scope.showLoading();
             $rootScope.service.post('getNearByContact', $scope.data, function (res) {
+                $scope.hideLoading();
                 $scope.contacts = angular.fromJson(res.result);
             });
 
