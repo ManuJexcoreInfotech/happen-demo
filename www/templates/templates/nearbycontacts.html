@@ -1,56 +1,26 @@
 <ion-view >
-	 <ion-nav-title>
+    <ion-nav-title>
         <img class="title-image" src="img/logo.png" />
     </ion-nav-title>
     <ion-content padding="10">
         <div class="padding"></div>
         <!--ng-repeat="item in items"--> 
-        <div> 
+        <div class="contact-table"> 
             <div class="row header even table-header">
                 <div class="col"><strong>Group</strong></div>
                 <div class="col"><strong>5km</strong></div>
                 <div class="col"><strong>10km</strong></div>
                 <div class="col"><strong>15km</strong></div>
             </div>
-            <div class="row header odd">
-                <div class="col">Friends</div>
-                <div class="col">
-                    <label> 1 </label>
-                    <div class="checkboxFour floatright">
-                        <input type="checkbox" value="1" id="checkboxFourInput2" name="userid"/>
-                        <label for="checkboxFourInput2"></label>
-                    </div>
-                </div>
-                <div class="col">3
-                    <div class="checkboxFour floatright">
-                        <input type="checkbox" value="1" id="checkboxFourInput3" name="userid"/>
-                        <label for="checkboxFourInput3"></label>
-                    </div>
-                </div>
-                <div class="col">0</div>
-            </div>
-            <div class="row header even">
-                <div class="col">Colleagues</div>
-                <div class="col">0</div>
-                <div class="col">0</div>
-                <div class="col">2
-                    <div class="checkboxFour floatright">
-                        <input type="checkbox" value="1" id="checkboxFourInput4" name="userid"/>
-                        <label for="checkboxFourInput4"></label>
-                    </div>
+            <div   ng-repeat="data in contacts">
+                <div class="row header ">
+                    <div class="col">{{data.inv_u_id == userId && data.inv_group||  data.inv_r_group}}</div>
+                    <div class="col">{{data.inv_five}}</div>
+                    <div class="col">{{data.inv_ten}}</div>
+                    <div class="col">{{data.inv_fifteen}}</div>
                 </div>
             </div>
-            <div class="row header even">
-                <div class="col">Family</div>
-                <div class="col">0</div>
-                <div class="col">0</div>
-                <div class="col">2
-                    <div class="checkboxFour floatright">
-                        <input type="checkbox" value="1" id="checkboxFourInput5" name="userid"/>
-                        <label for="checkboxFourInput5"></label>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="padding"></div>
         <div class="padding onebtncss">

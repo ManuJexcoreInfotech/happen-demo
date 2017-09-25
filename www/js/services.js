@@ -10,6 +10,7 @@ function Service($rootScope, $http, $ionicPopup,$ionicLoading) {
         receiveInvitation: 'webservice/api/receiveInvitation',
         acceptInvitation: 'webservice/api/acceptInvitation',
         ignoreInvitation: 'webservice/api/ignoreInvitation',
+        getNearByContact: 'webservice/api/getNearByContact',
         getInvitationDetail: 'webservice/api/getInvitationDetail',
         getContactDetail: 'webservice/api/getContactDetail',
         deleteContact: 'webservice/api/deleteContact',

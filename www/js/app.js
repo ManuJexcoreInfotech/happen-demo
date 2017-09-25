@@ -239,7 +239,7 @@ angular.module('app', [
                         views: {
                             'menuContent': {
                                 templateUrl: "templates/templates/nearbycontacts.html",
-                                controller: "HomeCtrl"
+                                controller: "NearByContactCrtl"
                             }
                         }
                     })

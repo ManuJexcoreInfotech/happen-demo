@@ -21,23 +21,23 @@ angular.module('app.controllers', [])
             });
 
 
-				var posOptions = {timeout: 10000, enableHighAccuracy: false};
-                $cordovaGeolocation
-                        .getCurrentPosition(posOptions)
-                        .then(function (position) {
-                            $scope.dat.latitude = position.coords.latitude;
-                            $scope.dat.longitude = position.coords.longitude;
-                            $scope.showLoading();
-                            $rootScope.service.post('updateLocation', $scope.dat, function (res) {
-                                $scope.hideLoading();
-                                if (res.status == 1) {
-                                    //alert("Your Location Publish Successfully.;")
-                                }
-                            });
-
-                        }, function (err) {
-                            console.log(err);
+            var posOptions = {timeout: 10000, enableHighAccuracy: false};
+            $cordovaGeolocation
+                    .getCurrentPosition(posOptions)
+                    .then(function (position) {
+                        $scope.dat.latitude = position.coords.latitude;
+                        $scope.dat.longitude = position.coords.longitude;
+                        $scope.showLoading();
+                        $rootScope.service.post('updateLocation', $scope.dat, function (res) {
+                            $scope.hideLoading();
+                            if (res.status == 1) {
+                                //alert("Your Location Publish Successfully.;")
+                            }
                         });
+
+                    }, function (err) {
+                        console.log(err);
+                    });
 
             $scope.dynamic_menus = {};
             $scope.appColor = Color.AppColor;
@@ -471,7 +471,19 @@ angular.module('app.controllers', [])
                 }
             }
         })
+//Near By Contacts
+        .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
+            $scope.data = {};
+            var UserId = getStorage('user_id');
+            $scope.data.u_id = UserId;
+            $scope.user = {};
+            $scope.userId = UserId;
+            $scope.contacts = {};
+            $rootScope.service.post('getNearByContact', $scope.data, function (res) {
+                $scope.contacts = angular.fromJson(res.result);
+            });
 
+        })
 //Contact Controller
         .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
 
@@ -526,7 +538,7 @@ angular.module('app.controllers', [])
             $scope.invitation = {};
             $scope.editInvitation = function (id) {
                 $scope.groups = [];
-               
+
                 $scope.user.u_id = getStorage('user_id');
                 $rootScope.service.post('groupList', $scope.user, function (res) {
                     $scope.groups = angular.fromJson(res.result);
