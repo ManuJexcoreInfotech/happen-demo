@@ -484,6 +484,55 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
                 $scope.contacts = angular.fromJson(res.result);
             });
+            
+            $scope.sendMessage = function () {
+
+                $scope.data.sender_u_id = $scope.data.u_id;
+                $scope.data.receivers = $scope.user;
+
+                $scope.valid = 1;
+
+                var myPopup = $ionicPopup.show({
+                    templateUrl: 'templates/templates/send_message.html',
+                    title: 'Send Message',
+                    scope: $scope,
+                    state: $state,
+                    buttons: [
+                        {text: 'Cancel'},
+                        {
+                            text: '<b>Send</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+                                if (!$scope.data.message) {
+                                    e.preventDefault();
+                                    alert("Please Eneter Message")
+                                } else {
+
+                                    $scope.showLoading();
+
+                                    $rootScope.service.post('sendMultiMessage', $scope.data, function (res) {
+                                        $scope.hideLoading();
+
+                                        if (res.status == 1) {
+                                            alert(res.message);
+
+                                            $state.go($state.current, {}, {reload: true});
+                                        } else {
+                                            $scope.valid = 0;
+                                            alert(res.message);
+                                        }
+                                    });
+                                    if ($scope.valid == 0)
+                                        e.preventDefault();
+                                }
+                            }
+                        },
+                    ]
+                });
+
+            };
+            
+            
 
         })
 //Contact Controller
