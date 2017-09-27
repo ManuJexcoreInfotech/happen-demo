@@ -36,6 +36,7 @@ angular.module('app.controllers', [])
                         });
 
                     }, function (err) {
+                        
                         console.log(err);
                     });
 
@@ -306,7 +307,7 @@ angular.module('app.controllers', [])
                             });
 
                         }, function (err) {
-                            console.log(err);
+                            alert("Please Turn on your GPS.");
                         });
             };
 
