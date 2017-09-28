@@ -473,7 +473,7 @@ angular.module('app.controllers', [])
             }
         })
 //Near By Contacts
-        .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
+        .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup,$timeout ) {
             $scope.data = {};
             var UserId = getStorage('user_id');
             $scope.data.u_id = UserId;
