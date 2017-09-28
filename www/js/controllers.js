@@ -302,7 +302,7 @@ angular.module('app.controllers', [])
                             $rootScope.service.post('updateLocation', $scope.dat, function (res) {
                                 $scope.hideLoading();
                                 if (res.status == 1) {
-                                    alert("Your Location Publish Successfully.;")
+                                    alert("Your location was published successfully.")
                                 }
                             });
 

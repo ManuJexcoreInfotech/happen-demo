@@ -18,7 +18,7 @@
                     <div class="col">
                         <label> {{data.inv_five}} </label>
                         <div class="checkboxFour floatright" ng-hide="data.inv_five <= 0">
-                            <input type="checkbox"  ng-checked="user[$index] =='{{data.group_name}}_50mt'" ng-true-value="'{{data.group_name}}_50mt'" value="50mt" id="checkboxFourInput1{{data.inv_u_id}}" name="userid[]"/>
+                            <input type="checkbox"  ng-checked="user[$index] =='{{data.group_name}}_50mt'" ng-true-value="'{{data.group_name}}_50mt'" value="50mt" id="checkboxFourInput1{{data.inv_u_id}}" name="userid[]" ng-model="user[$index]"/>
                             <label for="checkboxFourInput1{{data.inv_u_id}}"></label>
                         </div>
                     </div>
