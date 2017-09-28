@@ -510,7 +510,7 @@ angular.module('app.controllers', [])
                                 } else {
 
                                     $scope.showLoading();
-
+                                    $timeout($scope.hideLoading(), 3000);                            
                                     $rootScope.service.post('sendMultiMessage', $scope.data, function (res) {
                                         $scope.hideLoading();
 
