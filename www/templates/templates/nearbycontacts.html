@@ -13,7 +13,7 @@
                 <div class="col"><strong>1km</strong></div>
             </div>
             <div   ng-repeat="data in contacts">
-                <div class="row header " ng-show="data.inv_five!=0 && data.inv_ten!=0 && data.inv_fifteen!=0 ">
+                <div class="row header " ng-hide="data.inv_five==0 && data.inv_ten==0 && data.inv_fifteen==0 ">
                     <div class="col">{{data.group_name}}</div>
                     <div class="col">
                         <label> {{data.inv_five}} </label>
