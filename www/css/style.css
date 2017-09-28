@@ -270,7 +270,7 @@ input[type=text],input[type=email],input[type=number]
 .row:nth-child(odd) .col{background: #FFFFFF;}
 .row:nth-child(even) .col{background: #E3EFCD;}
 .col { color:#333333;}
-.table-header{color:#000;}
+.table-header{color:#000;border:1px solid #000;}
 h2.read{color:#333333;}
 h2.unread{color:#fff!important;}
 .row, .scroll {
