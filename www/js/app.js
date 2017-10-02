@@ -30,7 +30,8 @@ angular.module('app', [
 					window.plugins.AdMob.showInterstitialAd(
 					  true, 
 					  function(){},
-					  function(e){//alert(JSON.stringify(e));}
+					  function(e){//alert(JSON.stringify(e));
+					  }
 					);
 				
 				
