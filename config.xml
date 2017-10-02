@@ -73,5 +73,5 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-whitelist" />
     <plugin name="cordova-plugin-admob" spec="^3.2.4" />
-    <plugin name="org.apache.cordova.splashscreen" source="npm" />
+    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
 </widget>
