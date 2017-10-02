@@ -10,6 +10,11 @@ angular.module('app', [
 ])
 
         .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup, $ionicHistory, $cordovaDevice) {
+			
+			navigator.splashscreen.show();
+			setTimeout(function() {
+				navigator.splashscreen.hide();
+			}, 2000);
             $ionicPlatform.ready(function ()
             {
 				
