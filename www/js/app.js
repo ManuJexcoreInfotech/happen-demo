@@ -14,7 +14,7 @@ angular.module('app', [
 
             $ionicPlatform.ready(function ()
             {
-				if (window.plugins.AdMob) {
+				if (window.admob) {
 					window.plugins.AdMob.setOptions({
 					  publisherId: "ca-app-pub-7844737046957946/9216355879",
 					  interstitialAdId: "ca-app-pub-7844737046957946/5278703180",

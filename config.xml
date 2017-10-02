@@ -11,12 +11,11 @@
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-	<plugin name="cordova-plugin-device" source="npm" />
+    <plugin name="cordova-plugin-device" source="npm" />
     <plugin name="cordova-plugin-geolocation" source="npm" />
-    <plugin name="cordova-plugin-network-information" source="npm"  />
-    <plugin name="cordova-plugin-whitelist" source="npm"/>
-    <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-	<plugin name="cordova-plugin-admob" spec="^3.2.4" source="npm" />
+    <plugin name="cordova-plugin-network-information" source="npm" />
+    <plugin name="cordova-plugin-whitelist" source="npm" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <feature name="App">
         <param name="App" value="org.apache.cordova.App" />
     </feature>
@@ -75,4 +74,6 @@
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
     <preference name="xwalkMode" value="embedded" />
     <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-plugin-admob" spec="^3.2.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
 </widget>
