@@ -11,13 +11,13 @@ angular.module('app', [
 
         .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup, $ionicHistory, $cordovaDevice) {
 			
-			navigator.splashscreen.show();
-			setTimeout(function() {
-				navigator.splashscreen.hide();
-			}, 2000);
+			
             $ionicPlatform.ready(function ()
             {
-				
+				navigator.splashscreen.show();
+				setTimeout(function() {
+					navigator.splashscreen.hide();
+				}, 2000);
 					window.plugins.AdMob.setOptions({
 					  publisherId: "ca-app-pub-7844737046957946/9216355879",
 					  interstitialAdId: "ca-app-pub-7844737046957946/5278703180",
