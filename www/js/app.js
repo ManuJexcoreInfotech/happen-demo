@@ -11,10 +11,12 @@ angular.module('app', [
 
         .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup, $ionicHistory, $cordovaDevice, $cordovaSplashscreen) {
 			
-			$cordovaSplashscreen.show();
-			
-			setTimeout(function(){ $cordovaSplashscreen.hide(); },10000)
-			
+			document.addEventListener("deviceready", function() {
+				navigator.splashscreen.show();
+				window.setTimeout(function () {
+					navigator.splashscreen.hide();
+				}, splashDuration - fadeDuration);
+			});				
             $ionicPlatform.ready(function ()
             {
 				
