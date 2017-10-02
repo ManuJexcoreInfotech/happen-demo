@@ -1,0 +1,25 @@
+<ion-view view-title="RECEIVE INVITATION">
+    <ion-nav-title>
+        <img class="title-image" src="img/logo.png" />
+    </ion-nav-title>
+    <ion-content padding="10">
+        <!--<div class="padding"></div>-->
+        <h3 class="text-center">RECEIVE INVITATION</h3>
+        <div>
+            <!--<div class="row header">
+                <div class="col">Username</div>
+                <div class="col">Group Name</div>
+                <div class="col">Action</div>
+            </div>-->
+            <div class="row" ng-repeat="data in invite">
+                <div class="col">From <b>{{data.u_email}}</b>  </div>
+                <!--<div class="col">{{data.g_name}}</div>-->
+                <div class="col">
+                    <button class="button button-small button-primary" ng-click="acceptInvitation(data.inv_id, data.inv_group)">Accept</button>
+                    <span class="vertical-align " style="font-size: 2em" >|</span>
+                    <button class="button button-small button-danger" ng-click="ignoreInvitation(data.inv_id)">Ignore</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

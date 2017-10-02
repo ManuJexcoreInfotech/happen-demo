@@ -1,0 +1,26 @@
+<ion-content padding="10" >
+    <div class="list">
+        <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
+            <label class="item item-input">
+                <h2 class="leftside">Label </h2>
+                <input required type="text" class="inputbrd" ng-model="invitation.inv_name"  name="username"  placeholder="Contact Label"  form-validate-after>
+                <input  type="hidden" class="inputbrd" ng-model="invitation.inv_id"  name="inv_id"  placeholder="Contact Label"  form-validate-after>
+            </label>
+            <span ng-message class="warning-message-normal" ng-show="postForm.username.$error.required && postForm.username.$dirty">Required</span>
+            <label class="item item-input">
+                <h2 class="leftside">Group </h2>
+                <select name="group_id" required  ng-model="invitation.inv_group" class="inputbrd" >
+                    <!--<option  value="{{group}}" ng-selected="group!=''" >{{group}}</option>-->
+                    <option ng-repeat="x in groups"  ng-selected='x.g_name==invitation.inv_group'  value="{{x.g_name}}">{{x.g_name}}</option>
+                    <option value="1">Add New Group</option>
+                </select>
+            </label>
+            <label class="item item-input" ng-if="invitation.inv_group == 1">
+                <h2 class="leftside"> </h2>
+                <input  ng-model="invitation.group" class="inputbrd" name="group"  type="text" placeholder="Group Name" form-validate-after>
+            </label>
+            <span ng-message class="warning-message-normal" ng-show="postForm.group_id.$invalid && postForm.group.$dirty">Required</span>
+            <div class="padding"></div>
+        </form>
+    </div>
+</ion-content>

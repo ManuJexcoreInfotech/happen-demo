@@ -1,0 +1,101 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar  class="bar-{{appColor}} bar">
+            <ion-nav-back-button class="button-icon ion-arrow-left-c" >
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                    <span class=" badge badge-left badge-assertive" ng-if="invite > 0">{{invite}}</span>
+                </button>
+                 
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <a href="#app/messages" class="button button-icon nav-clear ion-ios-bell"  menu-close-keep-history></a>
+                <span class="badge badge-right badge-assertive" ng-if="notification">{{notification}}</span>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" animation="none"></ion-nav-view>
+    </ion-side-menu-content>
+
+
+    <ion-side-menu side="left">
+        <ion-header-bar  ng-show="1"  class="menus bar-light item-icon-left item item-complex">
+            <span ng-if="!user">
+                <h3 class="padding menutitle">
+                    <a href="" >
+                        <i class="ion-ios-home-outline"></i> <span> Menu</span>
+                    </a>
+                </h3>
+            </span>
+            <span ng-if="user">
+                <h3 class="padding">
+                    <a href="" >
+                        <i class="icon ion-ios-person"></i> <span class="username">{{user.u_username| capitalize}}</span>
+                    </a>
+                </h3>
+            </span>
+            <span class="icon icon-close pull-right menu-close"></span>
+        </ion-header-bar>
+        <ion-content class="menus-content">
+            <ion-list>
+                <!--<ion-item  nav-clear menu-close>
+                        <a href="#app/home" ng-class="{'button-assertive': getActiveClass(0)}"
+                           class="item-content">
+                                 <i class="icon ion-ios-home"></i> Home
+                        </a>
+                </ion-item>-->
+                <ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/send_invitation" class="item-content">
+                        <i class="icon ion-paper-airplane"></i> Send Invitation
+                    </a>
+                </ion-item>
+                <ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/receive_invitation" class="item-content">
+                        <i class="icon ion-android-send"></i> Receive Invitation <span class="badge badge-assertive" ng-if="invite > 0">{{invite}}</span>
+                    </a>
+                </ion-item>
+                <ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/nearbycontacts" class="item-content">
+                        <i class="icon ion-ios-location-outline"></i> Find Near By Contacts
+                    </a>
+                </ion-item>
+                <ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/messages" class="item-content">
+                        <i class="icon ion-email"></i> Messages
+                    </a>
+                </ion-item>
+
+                <ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/contact" class="item-content">
+                        <i class="icon ion-android-contacts"></i> Contacts
+                    </a>
+                </ion-item>
+                <ion-item  nav-clear menu-close-keep-history ng-if="!!user" class="item-icon-left item item-complex">
+                    <a  nav-clear menu-close-keep-history href="#app/change_password" class="item-content" ng-click="menuClose()">
+                        <i class="icon ion-ios-contact"></i> Change Password
+                    </a>
+                </ion-item>
+                <ion-item  nav-clear menu-close-keep-history  ng-if="!!user" class="item-icon-left item item-complex">
+                    <a ng-click="doLogout();
+                        menuClose()" class=" item-content">
+                        <i class="icon icon-left ion-log-out"></i> Logout
+                    </a>
+                </ion-item>
+                <!--                <ion-item  nav-clear menu-close ng-if="!isIOS"> 
+                                    <a  ng-click="showExit()"
+                                        class="item-content">
+                                        <i class="icon icon-left ion-android-exit"></i> Exit
+                                    </a>
+                                </ion-item>-->
+                <ion-item ng-show="0" nav-clear menu-close class="item-icon-left item item-complex">
+                    <a  ng-click="menuClose();
+                        welcome()"
+                        class="item icon icon-left ion-android-exit">
+                        <span class="item-content">{{'welcome'| translate}}</span>
+                    </a>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

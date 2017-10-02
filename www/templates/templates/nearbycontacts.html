@@ -1,0 +1,50 @@
+<ion-view >
+    <ion-nav-title>
+        <img class="title-image" src="img/logo.png" />
+    </ion-nav-title>
+    <ion-content padding="10">
+        <div class="padding"></div>
+        <!--ng-repeat="item in items"--> 
+        <div class="nearby-contact-table"> 
+            <div class="row header even table-header">
+                <div class="col"><strong>Group</strong></div>
+                <div class="col"><strong>50m</strong></div>
+                <div class="col"><strong>500m</strong></div>
+                <div class="col"><strong>1km</strong></div>
+            </div>
+            <div   ng-repeat="data in contacts">
+                <div class="row header " ng-hide="data.inv_five==0 && data.inv_ten==0 && data.inv_fifteen==0 ">
+                    <div class="col">{{data.group_name}}</div>
+                    <div class="col">
+                        <label> {{data.inv_five}} </label>
+                        <div class="checkboxFour floatright" ng-hide="data.inv_five <= 0">
+                            <input type="checkbox"  ng-checked="user[$index] =='{{data.group_name}}_50mt'" ng-true-value="'{{data.group_name}}_50mt'" value="50mt" id="checkboxFourInput1{{data.inv_u_id}}" name="userid[]" ng-model="user[$index]"/>
+                            <label for="checkboxFourInput1{{data.inv_u_id}}"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label> {{data.inv_ten}}</label>
+                        <div class="checkboxFour floatright" ng-hide="data.inv_ten <= 0">
+                            <input type="checkbox" value="{{data.group_name}}_500mt"  ng-checked="user[$index] =='{{data.group_name}}_500mt'" ng-true-value="'{{data.group_name}}_500mt'" id="checkboxFourInput2{{data.inv_u_id}}" name="userid[]" ng-model="user[$index]"/>
+                            <label for="checkboxFourInput2{{data.inv_u_id}}"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label> {{data.inv_fifteen}}</label>
+                        <div class="checkboxFour floatright" ng-hide="data.inv_fifteen <= 0">
+                            <input type="checkbox" ng-checked="user[$index] =='{{data.group_name}}_1km'" ng-true-value="'{{data.group_name}}_1km'" value="{{data.group_name}}_1km"  id="checkboxFourInput3{{data.inv_u_id}}" ng-model="user[$index]" name="userid[]" />
+                            <label for="checkboxFourInput3{{data.inv_u_id}}"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padding"></div>
+        <div class="padding onebtncss">
+            <button type="submit" class="button button-block button-{{appColor}}"  ng-click="sendMessage()"> Message </button>
+        </div>
+        <div class="padding onebtncss">
+            <a href="#/app/home" class="button button-block button-dark"> Home </a>
+        </div>
+    </ion-content>
+</ion-view>
