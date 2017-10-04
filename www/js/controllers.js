@@ -475,6 +475,7 @@ angular.module('app.controllers', [])
 //Near By Contacts
         .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup,$timeout ) {
             $scope.data = {};
+			$scope.rows = 0;
             var UserId = getStorage('user_id');
             $scope.data.u_id = UserId;
             $scope.user = {};
@@ -484,8 +485,14 @@ angular.module('app.controllers', [])
             $rootScope.service.post('getNearByContact', $scope.data, function (res) {
                 $scope.hideLoading();
                 $scope.contacts = angular.fromJson(res.result);
+				angular.forEach($scope.contacts, function(value, key) {
+					if(value.inv_five != 0 || value.inv_ten != 0 || value.inv_fifteen != 0)
+					{
+						$scope.rows++; 
+					}
+				});
             });
-            
+           
             $scope.sendMessage = function () {
 
                 $scope.data.sender_u_id = $scope.data.u_id;

@@ -12,8 +12,9 @@
                 <div class="col"><strong>500m</strong></div>
                 <div class="col"><strong>1km</strong></div>
             </div>
-            <div   ng-repeat="data in contacts">
+            <div   ng-repeat="data in contacts" id="body-nearby-contact-table">
                 <div class="row header " ng-hide="data.inv_five==0 && data.inv_ten==0 && data.inv_fifteen==0 ">
+					<div style="display:none;">({{$index + 1}})</div>
                     <div class="col">{{data.group_name}}</div>
                     <div class="col">
                         <label> {{data.inv_five}} </label>
@@ -38,6 +39,9 @@
                     </div>
                 </div>
             </div>
+			 <div class="row header  table-header "  ng-show="rows == 0" style="padding:5px">
+				No contact closeby, perhaps invite some more contacts?
+			 </div>
         </div>
         <div class="padding"></div>
         <div class="padding onebtncss">
@@ -46,5 +50,7 @@
         <div class="padding onebtncss">
             <a href="#/app/home" class="button button-block button-dark"> Home </a>
         </div>
+		
     </ion-content>
 </ion-view>
+
