@@ -858,7 +858,7 @@ angular.module('app.controllers', [])
             });
 
         })
-        .controller('ReplyMessageCtrl', function ($scope, $rootScope, $state, $location, $ionicHistory, $ionicPopup) {
+        .controller('ReplyMessageCtrl', function ($scope, $rootScope, $state, $location, $stateParams, $ionicPopup) {
 
             $scope.messages = {};
             $scope.data = {};
@@ -898,7 +898,8 @@ angular.module('app.controllers', [])
                                         $scope.hideLoading();
                                         if (res.status == 1) {
                                             alert(res.message);
-                                            $state.reload();
+                                            myPopup.close();
+                                            $state.go("app.reply_message" ,{msg_id:$scope.data.m_ref_id}, {reload: true});
                                         } else {
                                             $scope.valid = 0;
                                             alert(res.message);

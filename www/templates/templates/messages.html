@@ -8,7 +8,10 @@
         <div> 
             <ion-list class="messageList">
                 <ion-item ng-repeat="data in messages">
-                    <a href="#/app/reply_message?msg_id={{data.msg_id}}" ><h2 class=" " ng-class="data.msg_status == 0 && 'read' || 'unread'"> {{data.u_username| capitalize}}</h2></a>
+                    <a href="#/app/reply_message?msg_id={{data.msg_id}}" ><h2 class=" " ng-class="data.msg_status == 0 && 'read' || 'unread'"> {{data.u_username| capitalize}} <span class="pull-right">{{data.time_ago}}</span></h2> </a>
+                </ion-item>
+                <ion-item ng-show="!messages.length">
+                    NO Record Found.
                 </ion-item>
             </ion-list>
         </div>

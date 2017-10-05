@@ -295,7 +295,7 @@ angular.module('app', [
                         }
                     })
                     .state('app.reply_message', {
-                        url: "/reply_message",
+                        url: "/reply_message?msg_id=",
                         cache: false,
                         views: {
                             'menuContent': {
