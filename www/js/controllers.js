@@ -36,7 +36,7 @@ angular.module('app.controllers', [])
                         });
 
                     }, function (err) {
-                        
+
                         console.log(err);
                     });
 
@@ -473,9 +473,9 @@ angular.module('app.controllers', [])
             }
         })
 //Near By Contacts
-        .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup,$timeout ) {
+        .controller('NearByContactCrtl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup, $timeout) {
             $scope.data = {};
-			$scope.rows = 0;
+            $scope.rows = 0;
             var UserId = getStorage('user_id');
             $scope.data.u_id = UserId;
             $scope.user = {};
@@ -485,14 +485,14 @@ angular.module('app.controllers', [])
             $rootScope.service.post('getNearByContact', $scope.data, function (res) {
                 $scope.hideLoading();
                 $scope.contacts = angular.fromJson(res.result);
-				angular.forEach($scope.contacts, function(value, key) {
-					if(value.inv_five != 0 || value.inv_ten != 0 || value.inv_fifteen != 0)
-					{
-						$scope.rows++; 
-					}
-				});
+                angular.forEach($scope.contacts, function (value, key) {
+                    if (value.inv_five != 0 || value.inv_ten != 0 || value.inv_fifteen != 0)
+                    {
+                        $scope.rows++;
+                    }
+                });
             });
-           
+
             $scope.sendMessage = function () {
 
                 $scope.data.sender_u_id = $scope.data.u_id;
@@ -517,7 +517,7 @@ angular.module('app.controllers', [])
                                 } else {
 
                                     $scope.showLoading();
-                                    $timeout($scope.hideLoading(), 3000);                            
+                                    $timeout($scope.hideLoading(), 3000);
                                     $rootScope.service.post('sendMultiMessage', $scope.data, function (res) {
                                         $scope.hideLoading();
 
@@ -539,8 +539,8 @@ angular.module('app.controllers', [])
                 });
 
             };
-            
-            
+
+
 
         })
 //Contact Controller
@@ -856,6 +856,15 @@ angular.module('app.controllers', [])
                 $scope.messages = typeof data.result === 'object' ? data.result : null;
 
             });
+            $scope.getFavClassIcon = function (status, total) {
+                if (status == 1) {
+                    return 'unread';
+                }
+                if (total > 0) {
+                    return 'unread';
+                }
+                return 'read';
+            };
 
         })
         .controller('ReplyMessageCtrl', function ($scope, $rootScope, $state, $location, $stateParams, $ionicPopup) {
@@ -899,7 +908,7 @@ angular.module('app.controllers', [])
                                         if (res.status == 1) {
                                             alert(res.message);
                                             myPopup.close();
-                                            $state.go("app.reply_message" ,{msg_id:$scope.data.m_ref_id}, {reload: true});
+                                            $state.go("app.reply_message", {msg_id: $scope.data.m_ref_id}, {reload: true});
                                         } else {
                                             $scope.valid = 0;
                                             alert(res.message);
