@@ -851,8 +851,10 @@ angular.module('app.controllers', [])
         .controller('messageCtrl', function ($scope, $rootScope, $translate, $ionicHistory) {
 
             $scope.messages = {};
+             $scope.showLoading();
             $scope.sessionData.u_id = getStorage('user_id');
             $rootScope.service.post('getMessageList', $scope.sessionData, function (data) {
+                $scope.hideLoading();
                 $scope.messages = typeof data.result === 'object' ? data.result : null;
 
             });
