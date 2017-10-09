@@ -852,6 +852,9 @@ angular.module('app.controllers', [])
 
             $scope.messages = {};
              $scope.showLoading();
+             setTimeout(function(){
+                  $scope.hideLoading();
+             },5000);
             $scope.sessionData.u_id = getStorage('user_id');
             $rootScope.service.post('getMessageList', $scope.sessionData, function (data) {
                 $scope.hideLoading();
