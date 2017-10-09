@@ -849,7 +849,7 @@ angular.module('app.controllers', [])
 
 
         .controller('messageCtrl', function ($scope, $rootScope, $translate, $ionicHistory) {
-
+            var userId = getStorage("user_id");
             $scope.messages = {};
              $scope.showLoading();
              setTimeout(function(){
@@ -861,8 +861,8 @@ angular.module('app.controllers', [])
                 $scope.messages = typeof data.result === 'object' ? data.result : null;
 
             });
-            $scope.getFavClassIcon = function (status, total) {
-                if (status == 1) {
+            $scope.getFavClassIcon = function (Rec_id,status, total) {
+                if (status == 1 && Rec_id == userId) {
                     return 'unread';
                 }
                 if (total > 0) {
