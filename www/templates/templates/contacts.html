@@ -21,7 +21,7 @@
                             <div class="col">{{data.inv_u_id == userId && data.inv_group||  data.inv_r_group}}</div>
                             <div class="col" style="min-width:50px;max-width:50px;">
                                 <div class="checkboxFour">
-                                    <input type="checkbox" ng-true-value="{{data.inv_rec_u_id}}" ng-false-value="" id="checkboxFourInput{{data.inv_id}}" ng-model="user[$index]" name="userid[]" />
+                                    <input type="checkbox" ng-true-value="{{data.inv_u_id == userId && data.inv_u_id ||  data.inv_rec_u_id}}" ng-false-value="" id="checkboxFourInput{{data.inv_id}}" ng-model="user[$index]" name="userid[]" />
                                     <label for="checkboxFourInput{{data.inv_id}}"></label>
 
                                 </div>
