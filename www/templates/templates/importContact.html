@@ -1,0 +1,34 @@
+<ion-view view-title="CONTACTS">
+    <ion-nav-title>
+        <img class="title-image" src="img/logo.png" />
+    </ion-nav-title>
+    <ion-content padding="10">
+			
+            <form method="post" class="invtform" ng-submit="" name="postForm" novalidate>
+                <!--ng-repeat="item in items"--> 
+                <ion-list >
+					<ion-item ng-repeat="contact in contacts">
+						{{contact.displayName}}
+						<p ng-repeat="number in contact.phoneNumbers">
+							{{number.type}}:{{number.value}}
+						</p>
+						<p ng-repeat="email in contact.emails">
+							{{email.type}}:{{email.value}}
+						</p>
+					</ion-item>
+				</ion-list>
+				<div class="padding"  ng-show="!fbConnection">
+                    <a class="button button-block button-dark" ng-click="getContactList()" ng-hide="contacts.length > 0"> <i class="icon ion-archive"></i>  Import Contact </a>
+                </div>
+				 <div class="padding"></div>
+				
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendMessage()"> Send </button>
+                </div>
+				
+                <div class="padding onebtncss">
+                    <button type="submit" class="button button-block button-dark"> Home </button>
+                </div>
+            </form>
+    </ion-content>
+</ion-view>

@@ -71,6 +71,11 @@
                         <i class="icon ion-android-contacts"></i> Contacts
                     </a>
                 </ion-item>
+				<ion-item  nav-clear menu-close-keep-history class="item-icon-left item item-complex">
+                    <a menu-toggle="left" href="#app/importcontact" class="item-content">
+                        <i class="icon ion-archive"></i> Import Contacts
+                    </a>
+                </ion-item>
                 <ion-item  nav-clear menu-close-keep-history ng-if="!!user" class="item-icon-left item item-complex">
                     <a  nav-clear menu-close-keep-history href="#app/change_password" class="item-content" ng-click="menuClose()">
                         <i class="icon ion-ios-contact"></i> Change Password

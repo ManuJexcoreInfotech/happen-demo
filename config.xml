@@ -76,4 +76,9 @@
     <plugin name="cordova-plugin-whitelist" />
     <plugin name="cordova-plugin-admob" spec="^3.2.4" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
+	<plugin name="cordova-plugin-facebook4" source="npm">
+        <variable name="APP_ID" value="1749439122016304" />
+        <variable name="APP_NAME" value="Happenspances" />
+    </plugin>
+	<plugin name="cordova-plugin-contacts" spec="^2.3.1" value="org.apache.cordova.contacts"  />   
 </widget>

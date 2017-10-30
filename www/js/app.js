@@ -269,6 +269,16 @@ angular.module('app', [
                             }
                         }
                     })
+					.state('app.importcontact', {
+                        url: "/importcontact",
+                        cache: false,
+                        views: {
+                            'menuContent': {
+                                templateUrl: "templates/templates/importContact.html",
+                                controller: "ImportContactCrtl"
+                            }
+                        }
+                    })
                     .state('app.change_password', {
                         url: "/change_password",
                         cache: false,
