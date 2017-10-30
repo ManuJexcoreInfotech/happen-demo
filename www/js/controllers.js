@@ -936,9 +936,11 @@ angular.module('app.controllers', [])
 
 		.controller('ImportContactCrtl', function ($scope, $rootScope, $translate, $ionicHistory,$cordovaContacts) {			
 			
-				$scope.getContactList = function() {					
+				$scope.getContactList = function() {	
+					$scope.showLoading();
 					$cordovaContacts.find({filter: ''}).then(function(result) {
-						$scope.contacts = result;						
+						$scope.contacts = result;		
+						$scope.hideLoading();						
 						
 					}, function(error) {
 						console.log("ERROR: " + error);
