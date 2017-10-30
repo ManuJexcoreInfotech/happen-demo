@@ -938,9 +938,10 @@ angular.module('app.controllers', [])
 			
 				$scope.getContactList = function() {	
 					$scope.showLoading();
+					setTimeout(function(){$scope.hideLoading();},2000);
 					$cordovaContacts.find({filter: ''}).then(function(result) {
 						$scope.contacts = result;		
-						$scope.hideLoading();						
+												
 						
 					}, function(error) {
 						console.log("ERROR: " + error);
