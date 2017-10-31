@@ -934,7 +934,7 @@ angular.module('app.controllers', [])
 
         })
 
-        .controller('ImportContactCrtl', function ($scope, $rootScope, $translate, $ionicHistory, $cordovaContacts) {
+        .controller('ImportContactCrtl', function ($scope, $rootScope,  $ionicPlatform, $ionicHistory, $cordovaContacts) {
             $scope.search = "";
             $scope.getContactList = function () {
                 $scope.showLoading();
@@ -959,12 +959,8 @@ angular.module('app.controllers', [])
                         multiple: true, // Yes, return any contact that matches criteria
                         fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
                         //desiredFields: ['emails'] //return fields.
-                    };
-                    if ($ionicPlatform.isAndroid()) {
-                        opts.hasPhoneNumber = true;         //hasPhoneNumber only works for android.
-                    }
-                    ;
-                     $scope.showLoading();
+                    };                    
+                    $scope.showLoading();
                     setTimeout(function () {
                         $scope.hideLoading();
                     }, 2000);
