@@ -936,6 +936,7 @@ angular.module('app.controllers', [])
 
         .controller('ImportContactCrtl', function ($scope, $rootScope,  $ionicPlatform, $ionicHistory, $cordovaContacts) {
             $scope.user = {};
+            $scope.email = {};
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -954,7 +955,7 @@ angular.module('app.controllers', [])
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
                 if (isValid) {
-                    alert($scope.user.search);
+                   // alert($scope.user.search);
                     var opts = {//search options
                         filter: $scope.user.search, // 'Bob'
                         multiple: true, // Yes, return any contact that matches criteria
