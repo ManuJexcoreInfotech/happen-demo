@@ -935,7 +935,7 @@ angular.module('app.controllers', [])
         })
 
         .controller('ImportContactCrtl', function ($scope, $rootScope,  $ionicPlatform, $ionicHistory, $cordovaContacts) {
-            $scope.search = "";
+            $scope.user = {};
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -949,15 +949,16 @@ angular.module('app.controllers', [])
                     console.log("ERROR: " + error);
                 });
             }
-            var searchTerm = $scope.search;
+            
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
                 if (isValid) {
+                    alert($scope.user.search);
                     var opts = {//search options
-                        filter: $scope.search, // 'Bob'
+                        filter: $scope.user.search, // 'Bob'
                         multiple: true, // Yes, return any contact that matches criteria
-                        fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
+                        fields: ['displayName'] // These are the fields to search for 'bob'.
                         //desiredFields: ['emails'] //return fields.
                     };                    
                     $scope.showLoading();
@@ -973,9 +974,7 @@ angular.module('app.controllers', [])
                 }
             }
 
-            $scope.findContactsBySearchTerm = function (searchTerm) {
-
-            }
+            
         })
         .controller('AgentsCtrl', function ($scope, $rootScope, $ionicPopup, $timeout) {
             if (!$rootScope.agent) {
