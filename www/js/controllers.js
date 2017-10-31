@@ -851,17 +851,17 @@ angular.module('app.controllers', [])
         .controller('messageCtrl', function ($scope, $rootScope, $translate, $ionicHistory) {
             var userId = getStorage("user_id");
             $scope.messages = {};
-             $scope.showLoading();
-             setTimeout(function(){
-                  $scope.hideLoading();
-             },5000);
+            $scope.showLoading();
+            setTimeout(function () {
+                $scope.hideLoading();
+            }, 5000);
             $scope.sessionData.u_id = getStorage('user_id');
             $rootScope.service.post('getMessageList', $scope.sessionData, function (data) {
                 $scope.hideLoading();
                 $scope.messages = typeof data.result === 'object' ? data.result : null;
 
             });
-            $scope.getFavClassIcon = function (Rec_id,status, total) {
+            $scope.getFavClassIcon = function (Rec_id, status, total) {
                 if (status == 1 && Rec_id == userId) {
                     return 'unread';
                 }
@@ -934,24 +934,53 @@ angular.module('app.controllers', [])
 
         })
 
-		.controller('ImportContactCrtl', function ($scope, $rootScope, $translate, $ionicHistory,$cordovaContacts) {			
-			
-				$scope.getContactList = function() {	
-					$scope.showLoading();
-					setTimeout(function(){$scope.hideLoading();},2000);
-					$cordovaContacts.find({filter: ''}).then(function(result) {
-						$scope.contacts = result;		
-												
-						
-					}, function(error) {
-						console.log("ERROR: " + error);
-					});
-				}					
-		})
+        .controller('ImportContactCrtl', function ($scope, $rootScope, $translate, $ionicHistory, $cordovaContacts) {
+            $scope.search = "";
+            $scope.getContactList = function () {
+                $scope.showLoading();
+                setTimeout(function () {
+                    $scope.hideLoading();
+                }, 2000);
+                $cordovaContacts.find({filter: ''}).then(function (result) {
+                    $scope.contacts = result;
 
 
+                }, function (error) {
+                    console.log("ERROR: " + error);
+                });
+            }
+            var searchTerm = $scope.search;
+            $scope.required = 0;
+            $scope.submitForm = function (isValid) {
+                $scope.required = 0;
+                if (isValid) {
+                    var opts = {//search options
+                        filter: $scope.search, // 'Bob'
+                        multiple: true, // Yes, return any contact that matches criteria
+                        fields: ['displayName', 'name'], // These are the fields to search for 'bob'.
+                        desiredFields: [emails] //return fields.
+                    };
+                    if ($ionicPlatform.isAndroid()) {
+                        opts.hasPhoneNumber = true;         //hasPhoneNumber only works for android.
+                    }
+                    ;
+                     $scope.showLoading();
+                    setTimeout(function () {
+                        $scope.hideLoading();
+                    }, 2000);
+                    $cordovaContacts.find(opts).then(function (contactsFound) {
+                        $scope.contacts = contactsFound;
+                    });
+                }
+                else{
+                    $scope.required = 1;
+                }
+            }
 
+            $scope.findContactsBySearchTerm = function (searchTerm) {
 
+            }
+        })
         .controller('AgentsCtrl', function ($scope, $rootScope, $ionicPopup, $timeout) {
             if (!$rootScope.agent) {
                 return;
