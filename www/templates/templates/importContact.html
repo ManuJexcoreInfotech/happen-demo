@@ -32,7 +32,7 @@
                         <div class="col">{{email.value}}</div>                        
                         <div class="col" style="min-width:50px;max-width:50px;">
                             <div class="checkboxFour">
-                                <input type="checkbox" ng-true-value="{{email.value}}" ng-false-value="" id="checkboxFourInput{{email.value}}" ng-model="email[$index]" name="userid[]" />
+                                <input type="checkbox" checked ng-true-value="{{email.value}}" ng-false-value="" id="checkboxFourInput{{email.value}}" ng-model="email[$index]" name="userid[]" />
                                 <label for="checkboxFourInput{{email.value}}"></label>
                             </div>
                         </div>                       
@@ -47,18 +47,6 @@
             <div class="padding onebtncss">
                 <button type="submit" class="button button-block button-dark"> Home </button>
             </div>
-        </form>
-        <ion-list >
-            <ion-item ng-repeat="contact in contacts">
-                {{contact.displayName}}
-                <p ng-repeat="number in contact.phoneNumbers">
-                    {{number.type}}:{{number.value}}
-                </p>
-                <p ng-repeat="email in contact.emails">
-                    {{email.type}}:{{email.value}}
-                </p>
-            </ion-item>
-        </ion-list>
-       
+        </form>               
     </ion-content>
 </ion-view>
