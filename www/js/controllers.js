@@ -957,8 +957,8 @@ angular.module('app.controllers', [])
                     var opts = {//search options
                         filter: $scope.search, // 'Bob'
                         multiple: true, // Yes, return any contact that matches criteria
-                        fields: ['displayName', 'name'], // These are the fields to search for 'bob'.
-                        desiredFields: [emails] //return fields.
+                        fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
+                        //desiredFields: ['emails'] //return fields.
                     };
                     if ($ionicPlatform.isAndroid()) {
                         opts.hasPhoneNumber = true;         //hasPhoneNumber only works for android.
