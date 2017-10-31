@@ -936,7 +936,7 @@ angular.module('app.controllers', [])
 
         .controller('ImportContactCrtl', function ($scope, $rootScope,  $ionicPlatform, $ionicHistory, $cordovaContacts) {
             $scope.user = {};
-            $scope.email = {};
+            $scope.emailAddress = {};
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -950,7 +950,7 @@ angular.module('app.controllers', [])
                     console.log("ERROR: " + error);
                 });
             }
-            
+          
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
@@ -973,6 +973,10 @@ angular.module('app.controllers', [])
                 else{
                     $scope.required = 1;
                 }
+            }
+            
+            $scope.sendInvite = function() {
+                console.log($scope.emailAddress);
             }
 
             

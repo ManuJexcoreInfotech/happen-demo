@@ -18,7 +18,7 @@
             </form>
         </div>
         <div class="padding"></div>
-        <form method="post" class="invtform" ng-submit="" name="postForm" novalidate>
+       
             <!--ng-repeat="item in items"--> 
             <div class="contact-table" style="max-height:{{height}}px">
                 <div class="row header">
@@ -26,14 +26,14 @@
                     <div class="col">Email</div>                   
                     <div class="col col-25" style="min-width:50px;max-width:50px;"></div>                    
                 </div>
-                <div  ng-repeat="contact in contacts">
-                    <div class="row " ng-repeat="email in contact.emails">
+                <div  ng-repeat="(index,contact) in contacts ">
+                    <div class="row " >
                         <div class="col" >{{contact.displayName}}</div>
-                        <div class="col">{{email.value}}</div>                        
+                        <div class="col">{{contact.emails[0].value}}</div>                        
                         <div class="col" style="min-width:50px;max-width:50px;">
                             <div class="checkboxFour">
-                                <input type="checkbox" checked ng-true-value="{{email.value}}" ng-false-value="" id="checkboxFourInput{{email.value}}" ng-model="email[$index]" name="userid[]" />
-                                <label for="checkboxFourInput{{email.value}}"></label>
+                                <input type="checkbox" ng-true-value="{{contact.emails[0].value}}" ng-false-value="" id="checkboxFourInput{{index}}" ng-model="emailAddress[index]" value="{{contact.emails[0].value}}"  name="userid[]" />
+                                <label for="checkboxFourInput{{index}}"></label>
                             </div>
                         </div>                       
                     </div>
@@ -42,11 +42,11 @@
             <div class="padding"></div>
             <h4 ng-hide="contacts.length > 0" class="text-center">No record Found. </h4>
             <div class="padding onebtncss">
-                <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendMessage()"> Send </button>
+                <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendInvite()"> Send </button>
             </div>
             <div class="padding onebtncss">
                 <button type="submit" class="button button-block button-dark"> Home </button>
             </div>
-        </form>               
+                    
     </ion-content>
 </ion-view>
