@@ -945,7 +945,7 @@ angular.module('app.controllers', [])
                 $scope.groups = res.result;
             });
            
-            $scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
+//            $scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -958,13 +958,13 @@ angular.module('app.controllers', [])
                 });
             }
             $scope.user.name =[];
-            angular.forEach($scope.contacts, function (index, value) {
-                //if (index.displayName.indexOf($scope.user.search) > -1) {
-                    $scope.email[value] = index.emails[0].value;
-                    $scope.user.name[value] = index.displayName;
-                 //   $scope.contact.push(index);
-                //}
-            });
+//            angular.forEach($scope.contacts, function (index, value) {
+//                //if (index.displayName.indexOf($scope.user.search) > -1) {
+//                    $scope.email[value] = index.emails[0].value;
+//                    $scope.user.name[value] = index.displayName;
+//                 //   $scope.contact.push(index);
+//                //}
+//            });
 //            console.log($scope.contact);
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
