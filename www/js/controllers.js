@@ -986,7 +986,7 @@ angular.module('app.controllers', [])
 //                            if (index.displayName.indexOf($scope.user.search) > -1) {
                                 $scope.email[value] = index.emails[0].value;
 //                                $scope.contacts.push(index);
-                            }
+//                            }
                         });
                     });
                 } else {
