@@ -935,16 +935,17 @@ angular.module('app.controllers', [])
         })
 
         .controller('ImportContactCrtl', function ($scope, $rootScope, $ionicPopup, $ionicHistory, $cordovaContacts) {
-            
+
             $scope.email = [];
             $scope.groups = [];
+            $scope.contacts = [];
             $scope.user = {};
             $scope.user.u_id = getStorage('user_id');
             $rootScope.service.post('groupList', $scope.user, function (res) {
                 $scope.groups = res.result;
             });
-            
-//            $scope.contacts =[{"displayName":"Manish","emails":[{value:"test@gmail.com"},{value:"fadg@gmail.com"}]},{"displayName":"Manish","emails":[{value:"test1@gmail.com"},{value:"fadg1@gmail.com"}]}] ;
+           
+            //$scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -956,20 +957,23 @@ angular.module('app.controllers', [])
                     console.log("ERROR: " + error);
                 });
             }
+//            $scope.contact =[];
 //            angular.forEach($scope.contacts, function (index, value) {
-//                $scope.email[value]= index.emails[0].value;
-//               // alert(index.emails[0].value);
+//                if (index.displayName.indexOf($scope.user.search) > -1) {
+//                    $scope.email[value] = index.emails[0].value;
+//                    $scope.contact.push(index);
+//                }
 //            });
-//            console.log($scope.email);
+//            console.log($scope.contact);
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
                 if (isValid) {
                     // alert($scope.user.search);
                     var opts = {//search options
-                        filter: $scope.user.search, // 'Bob'
+                        filter: "", //$scope.user.search, // 'Bob'
                         multiple: true, // Yes, return any contact that matches criteria
-                        fields: ['displayName','name'] // These are the fields to search for 'bob'.
+                        fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
                                 //desiredFields: ['emails'] //return fields.
                     };
                     $scope.showLoading();
@@ -977,9 +981,12 @@ angular.module('app.controllers', [])
                         $scope.hideLoading();
                     }, 2000);
                     $cordovaContacts.find(opts).then(function (contactsFound) {
-                        $scope.contacts = contactsFound;
-                        angular.forEach($scope.contacts, function (index, value) {
-                           $scope.email[value]= index.emails[0].value;
+                        //$scope.contacts = contactsFound;
+                        angular.forEach(contactsFound, function (index, value) {
+                            if (index.displayName.indexOf($scope.user.search) > -1) {
+                                $scope.email[value] = index.emails[0].value;
+                                $scope.contacts.push(index);
+                            }
                         });
                     });
                 } else {
@@ -989,11 +996,11 @@ angular.module('app.controllers', [])
             $scope.removeEmail = function (val) {
                 alert(val)
                 var index = $scope.email.indexOf(val);
-                if ($scope.email[index] === val){
+                if ($scope.email[index] === val) {
                     $scope.email.splice(index, 1);
                 } else {
                     $scope.email.push(val);
-                }                
+                }
             }
             $scope.user.email = $scope.email;
             $scope.sendInvitation = function () {
