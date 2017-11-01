@@ -971,7 +971,7 @@ angular.module('app.controllers', [])
                 if (isValid) {
                     // alert($scope.user.search);
                     var opts = {//search options
-                        filter: "", //$scope.user.search, // 'Bob'
+                        filter: $scope.user.search, // 'Bob'
                         multiple: true, // Yes, return any contact that matches criteria
                         fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
                                 //desiredFields: ['emails'] //return fields.
@@ -981,13 +981,13 @@ angular.module('app.controllers', [])
                         $scope.hideLoading();
                     }, 2000);
                     $cordovaContacts.find(opts).then(function (contactsFound) {
-                        //$scope.contacts = contactsFound;
-                        angular.forEach(contactsFound, function (index, value) {
-                            if (index.displayName.indexOf($scope.user.search) > -1) {
-                                $scope.email[value] = index.emails[0].value;
-                                $scope.contacts.push(index);
-                            }
-                        });
+                        $scope.contacts = contactsFound;
+//                        angular.forEach(contactsFound, function (index, value) {
+//                            if (index.displayName.indexOf($scope.user.search) > -1) {
+//                                $scope.email[value] = index.emails[0].value;
+//                                $scope.contacts.push(index);
+//                            }
+//                        });
                     });
                 } else {
                     $scope.required = 1;
