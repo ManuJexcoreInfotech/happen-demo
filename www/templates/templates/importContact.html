@@ -18,35 +18,35 @@
             </form>
         </div>
         <div class="padding"></div>
-       
-            <!--ng-repeat="item in items"--> 
-            <div class="contact-table" style="max-height:{{height}}px">
-                <div class="row header">
-                    <div class="col">Name</div>
-                    <div class="col">Email</div>                   
-                    <div class="col col-25" style="min-width:50px;max-width:50px;"></div>                    
+
+        <!--ng-repeat="item in items"--> 
+        <div class="contact-table" style="max-height:{{height}}px">
+            <div class="row header">
+                <div class="col">Name</div>
+                <div class="col">Email</div>                   
+                <div class="col col-25" style="min-width:50px;max-width:50px;"></div>                    
+            </div>
+            <div  ng-repeat="(index,contact) in contacts ">
+                <div class="row " ng-show="contact.emails.length > 0">
+                    <div class="col" >{{contact.displayName}}</div>
+                    <div class="col">{{contact.emails[0].value}}</div>                        
+                    <div class="col" style="min-width:50px;max-width:50px;">
+                        <div class="checkboxFour">
+                            <input type="checkbox" checked ng-click="removeEmail(contact.emails[0].value)" ng-true-value="{{contact.emails[0].value}}" ng-false-value="0" id="checkboxFourInput{{index}}" ng-model="email[index]" value=""  name="userid[]" />
+                            <label for="checkboxFourInput{{index}}"></label>
+                        </div>
+                    </div>                       
                 </div>
-                <div  ng-repeat="(index,contact) in contacts ">
-                    <div class="row " ng-show="contact.emails.length > 0">
-                        <div class="col" >{{contact.displayName}}</div>
-                        <div class="col">{{contact.emails[0].value}}</div>                        
-                        <div class="col" style="min-width:50px;max-width:50px;">
-                            <div class="checkboxFour">
-                                <input type="checkbox" ng-true-value="{{contact.emails[0].value}}" ng-false-value="" id="checkboxFourInput{{index}}" ng-model="emailAddress[index]" value="{{contact.emails[0].value}}"  name="userid[]" />
-                                <label for="checkboxFourInput{{index}}"></label>
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
             </div>
-            <div class="padding"></div>
-            <h4 ng-hide="contacts.length > 0" class="text-center">No record Found. </h4>
-            <div class="padding onebtncss">
-                <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendInvite()"> Send </button>
-            </div>
-            <div class="padding onebtncss">
-                <button type="submit" class="button button-block button-dark"> Home </button>
-            </div>
-                    
+        </div>
+        <div class="padding"></div>
+        <h4 ng-hide="contacts.length > 0" class="text-center">No record Found. </h4>
+        <div class="padding onebtncss">
+            <button type="submit" class="button button-block button-{{appColor}}" ng-click="sendInvitation()"> Send </button>
+        </div>
+        <div class="padding onebtncss">
+            <button type="submit" class="button button-block button-dark"> Home </button>
+        </div>
+
     </ion-content>
 </ion-view>

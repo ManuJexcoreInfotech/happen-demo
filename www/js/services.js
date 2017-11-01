@@ -7,6 +7,7 @@ function Service($rootScope, $http, $ionicPopup,$ionicLoading) {
         groupList: 'webservice/api/getGroups',
         getContacts: 'webservice/api/getContacts',
         sendInvitation: 'webservice/api/sendInvistation',
+        sendMultipleInvitation: 'webservice/api/sendMultipleInvitation',
         receiveInvitation: 'webservice/api/receiveInvitation',
         acceptInvitation: 'webservice/api/acceptInvitation',
         ignoreInvitation: 'webservice/api/ignoreInvitation',
