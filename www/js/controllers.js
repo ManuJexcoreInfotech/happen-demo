@@ -972,7 +972,7 @@ angular.module('app.controllers', [])
                     // alert($scope.user.search);
                     var opts = {//search options
                         filter: $scope.user.search, // 'Bob'
-                        multiple: true, // Yes, return any contact that matches criteria
+                        multiple: false, // Yes, return any contact that matches criteria
                         fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
                                 //desiredFields: ['emails'] //return fields.
                     };
@@ -994,7 +994,7 @@ angular.module('app.controllers', [])
                 }
             };
             $scope.removeEmail = function (val) {
-                alert(val)
+               // alert(val)
                 var index = $scope.email.indexOf(val);
                 if ($scope.email[index] === val) {
                     $scope.email.splice(index, 1);
