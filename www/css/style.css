@@ -121,6 +121,7 @@ img {
 .warning-message-normal{
     color: red !important;
 }
+
 .form-bg{
     background: #f3f8e2;
     padding: 10px;
@@ -326,7 +327,7 @@ h2.unread{color:#fff!important;}
 .normal .popup-body{
     height: auto !important;
 }
-
+.contact-table .row .col input[type=text]{width:100%;}
 .contact-table,.nearby-contact-table{ max-height:80%;overflow:scroll;padding:0 2%;}
 .contact-table .row,.nearby-contact-table .row{ padding:0 0px}
 .contact-table .row .col,.nearby-contact-table .row .col{background:#fff;}

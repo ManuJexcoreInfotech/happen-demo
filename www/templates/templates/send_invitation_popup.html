@@ -2,11 +2,6 @@
     <div class="list">
         <form method="post" class="invtform" ng-submit="submitForm(postForm.$valid)" name="postForm" novalidate>
             <label class="item item-input">
-                <h2 class="leftside">Name </h2>
-                <input required type="text" class="inputbrd" ng-model="user.name" name="name"  placeholder="User Id" value="" form-validate-after>
-            </label>
-            <span ng-message class="warning-message-normal" ng-show="postForm.name.$error.required && postForm.name.$dirty">Required</span>
-            <label class="item item-input">
                 <h2 class="leftside">Group </h2>
                 <select name="group_id" required  ng-model="user.group_id" class="inputbrd" >
                     <!--<option  value="{{group}}" ng-selected="group!=''" >{{group}}</option>-->

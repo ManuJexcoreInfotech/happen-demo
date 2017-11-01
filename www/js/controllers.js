@@ -945,7 +945,7 @@ angular.module('app.controllers', [])
                 $scope.groups = res.result;
             });
            
-            //$scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
+            $scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -957,13 +957,14 @@ angular.module('app.controllers', [])
                     console.log("ERROR: " + error);
                 });
             }
-//            $scope.contact =[];
-//            angular.forEach($scope.contacts, function (index, value) {
-//                if (index.displayName.indexOf($scope.user.search) > -1) {
-//                    $scope.email[value] = index.emails[0].value;
-//                    $scope.contact.push(index);
-//                }
-//            });
+            $scope.user.name =[];
+            angular.forEach($scope.contacts, function (index, value) {
+                //if (index.displayName.indexOf($scope.user.search) > -1) {
+                    $scope.email[value] = index.emails[0].value;
+                    $scope.user.name[value] = index.displayName;
+                 //   $scope.contact.push(index);
+                //}
+            });
 //            console.log($scope.contact);
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
@@ -985,6 +986,7 @@ angular.module('app.controllers', [])
                         angular.forEach( $scope.contacts , function (index, value) {
 //                            if (index.displayName.indexOf($scope.user.search) > -1) {
                                 $scope.email[value] = index.emails[0].value;
+                                $scope.user.name[value] = index.displayName;                                
 //                                $scope.contacts.push(index);
 //                            }
                         });
@@ -998,6 +1000,7 @@ angular.module('app.controllers', [])
                 var index = $scope.email.indexOf(val);
                 if ($scope.email[index] === val) {
                     $scope.email.splice(index, 1);
+                    $scope.user.name.splice(index, 1);
                 } else {
                     $scope.email.push(val);
                 }

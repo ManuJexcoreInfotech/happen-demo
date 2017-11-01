@@ -29,8 +29,8 @@
             </div>
             <div  ng-repeat="(index,contact) in contacts ">
                 <div class="row " ng-show="contact.emails.length > 0">
-                    <div class="col" >{{contact.displayName}}</div>
-                    <div class="col" ><input type="text" name="" ng-model="user.name[index]" value="{{contact.displayName}}" /></div>
+                    <div class="col" ng-model="user.name[index]">{{contact.displayName}}</div>
+                    <div class="col" ><a ng-hide="!userser"  ></a><input type="text" name="text[]" ng-model="user.name[index]"  /></div>
                     <div class="col">{{contact.emails[0].value}}</div>                        
                     <div class="col" style="min-width:50px;max-width:50px;">
                         <div class="checkboxFour">
