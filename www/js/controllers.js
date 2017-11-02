@@ -1007,15 +1007,17 @@ angular.module('app.controllers', [])
             }
             $scope.user.email = $scope.email;
             $scope.sendInvitation = function () {
+                console.log($scope.user.name);
                 var myPopup = $ionicPopup.show({
                     templateUrl: 'templates/templates/send_invitation_popup.html',
                     title: 'Send Invitation',
                     scope: $scope,
+                    cssClass: 'send-container',
                     buttons: [
-                        {text: 'Cancel', type: "button-small"},
+                        {text: 'Cancel', type: "button-danger"},
                         {
                             text: '<b>Send</b>',
-                            type: 'button-positive button-small',
+                            type: 'button-positive ',
                             onTap: function (e) {
                                 if (!$scope.user.name) {
                                     e.preventDefault();

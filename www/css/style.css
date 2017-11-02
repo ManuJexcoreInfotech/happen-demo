@@ -319,6 +319,9 @@ h2.unread{color:#fff!important;}
 .popup-body{
     height: 280px !important;
 }
+.send-container .popup-body{
+    height: 125px !important;
+}
 .popup-title{
     font-size: 16px;
     font-weight: 600;
