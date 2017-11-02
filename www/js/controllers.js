@@ -977,7 +977,7 @@ angular.module('app.controllers', [])
                     var opts = {//search options
                         filter: '',//$scope.user.search, // 'Bob'
                         multiple: false, // Yes, return any contact that matches criteria
-                        fields: ['displayName'] // These are the fields to search for 'bob'.
+                        fields: ['displayName', 'name'] // These are the fields to search for 'bob'.
                                 //desiredFields: ['emails'] //return fields.
                     };
                     $scope.showLoading();
@@ -986,24 +986,24 @@ angular.module('app.controllers', [])
                     }, 2000);
                     $cordovaContacts.find(opts).then(function (contactsFound) {
                         $scope.contacts = contactsFound;
-//                        angular.forEach( $scope.contacts , function (index, value) {
-////                            if (index.displayName.indexOf($scope.user.search) > -1) {
-//                                $scope.email[value] = index.emails[0].value;
-//                                $scope.user.name[value] = index.displayName;                                
-////                                $scope.contacts.push(index);
-////                            }
-//                        });
-                        angular.forEach($scope.contacts, function (index, value) {
-                            alert("index" + index.displayName.indexOf($scope.user.search) + index.displayName);
-                            if (index.displayName.indexOf($scope.user.search) === 0) {
-                                $scope.contact.push(index);
-                                value = $scope.contact.length - 1;
+                        angular.forEach( $scope.contacts , function (index, value) {
+//                            if (index.displayName.indexOf($scope.user.search) > -1) {
                                 $scope.email[value] = index.emails[0].value;
-                                $scope.user.name[value] = index.displayName;
-                            }
+                                $scope.user.name[value] = index.displayName;                                
+//                                $scope.contacts.push(index);
+//                            }
                         });
-                        alert($scope.contact.length)
-                        $scope.contacts = $scope.contact;
+//                        angular.forEach($scope.contacts, function (index, value) {
+//                            alert("index" + index.displayName.indexOf($scope.user.search) + index.displayName);
+//                            if (index.displayName.indexOf($scope.user.search) === 0) {
+//                                $scope.contact.push(index);
+//                                value = $scope.contact.length - 1;
+//                                $scope.email[value] = index.emails[0].value;
+//                                $scope.user.name[value] = index.displayName;
+//                            }
+//                        });
+//                        alert($scope.contact.length)
+//                        $scope.contacts = $scope.contact;
                     });
                 } else {
                     $scope.required = 1;
