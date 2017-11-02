@@ -944,8 +944,8 @@ angular.module('app.controllers', [])
             $rootScope.service.post('groupList', $scope.user, function (res) {
                 $scope.groups = res.result;
             });
-           
-//            $scope.contacts = [{"displayName": "Manishk", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
+
+//            $scope.contacts = [{"displayName": "Test", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Kalpesh", "emails": [{value: "test1@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
             $scope.getContactList = function () {
                 $scope.showLoading();
                 setTimeout(function () {
@@ -957,15 +957,18 @@ angular.module('app.controllers', [])
                     console.log("ERROR: " + error);
                 });
             }
-            $scope.user.name =[];
+            $scope.user.name = [];
+            $scope.contact = [];
+//            $scope.user.search = 'M';
 //            angular.forEach($scope.contacts, function (index, value) {
-//                //if (index.displayName.indexOf($scope.user.search) > -1) {
+//                if (index.displayName.indexOf($scope.user.search) == 0) {
+//                    $scope.contact.push(index);
+//                    value = $scope.contact.length - 1;
 //                    $scope.email[value] = index.emails[0].value;
 //                    $scope.user.name[value] = index.displayName;
-//                 //   $scope.contact.push(index);
-//                //}
+//                }
 //            });
-//            console.log($scope.contact);
+            
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
@@ -983,20 +986,29 @@ angular.module('app.controllers', [])
                     }, 2000);
                     $cordovaContacts.find(opts).then(function (contactsFound) {
                         $scope.contacts = contactsFound;
-                        angular.forEach( $scope.contacts , function (index, value) {
-//                            if (index.displayName.indexOf($scope.user.search) > -1) {
+//                        angular.forEach( $scope.contacts , function (index, value) {
+////                            if (index.displayName.indexOf($scope.user.search) > -1) {
+//                                $scope.email[value] = index.emails[0].value;
+//                                $scope.user.name[value] = index.displayName;                                
+////                                $scope.contacts.push(index);
+////                            }
+//                        });
+                        angular.forEach($scope.contacts, function (index, value) {
+                            if (index.displayName.indexOf($scope.user.search) == 0) {
+                                $scope.contact.push(index);
+                                value = $scope.contact.length - 1;
                                 $scope.email[value] = index.emails[0].value;
-                                $scope.user.name[value] = index.displayName;                                
-//                                $scope.contacts.push(index);
-//                            }
+                                $scope.user.name[value] = index.displayName;
+                            }
                         });
+                        $scope.contacts = $scope.contact;
                     });
                 } else {
                     $scope.required = 1;
                 }
             };
             $scope.removeEmail = function (val) {
-               // alert(val)
+                // alert(val)
                 var index = $scope.email.indexOf(val);
                 if ($scope.email[index] === val) {
                     $scope.email.splice(index, 1);
