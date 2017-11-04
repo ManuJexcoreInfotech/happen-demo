@@ -24,6 +24,7 @@
             <div class="row header">
                 <div class="col">Name</div>
                 <div class="col">Label</div>
+                <div class="col">Group</div>
                 <div class="col">Email</div>                   
                 <div class="col col-25" style="min-width:50px;max-width:50px;"></div>                    
             </div>
@@ -31,6 +32,17 @@
                 <div class="row " ng-show="contact.emails.length > 0">
                     <div class="col" ng-model="user.name[index]">{{contact.displayName}}</div>
                     <div class="col" ><a ng-hide="!userser"  ></a><input type="text" name="text[]" ng-model="user.name[index]"  /></div>
+                    <div class="col" >
+                       
+                            <select name="group_id[{{index}}]" required  ng-model="user.group_id[index]"  class="inputbrd" >
+                                <!--<option  value="{{group}}" ng-selected="group!=''" >{{group}}</option>-->
+                                <option ng-repeat="x in groups" ng-selected="$index == 0" value="{{x.g_name}}" ng-init="user.group_id[index]=x.g_name">{{x.g_name}}</option>
+                                <option value="1">Add New Group</option>
+                            </select>
+                        
+                            <input  ng-model="user.group[index]" class="inputbrd" name="group[{{index}}]" ng-if="user.group_id[index] == 1"  type="text" placeholder="Group Name" form-validate-after>
+                        
+                    </div>
                     <div class="col">{{contact.emails[0].value}}</div>                        
                     <div class="col" style="min-width:50px;max-width:50px;">
                         <div class="checkboxFour">
@@ -49,6 +61,5 @@
         <div class="padding onebtncss">
             <button type="submit" class="button button-block button-dark"> Home </button>
         </div>
-
     </ion-content>
 </ion-view>

@@ -934,15 +934,20 @@ angular.module('app.controllers', [])
 
         })
 
-        .controller('ImportContactCrtl', function ($scope, $rootScope, $ionicPopup, $ionicHistory, $cordovaContacts) {
+        .controller('ImportContactCrtl', function ($scope, $rootScope, $state, $ionicHistory, $cordovaContacts) {
 
+            $scope.user = {};
             $scope.email = [];
             $scope.groups = [];
             $scope.contacts = [];
-            $scope.user = {};
+            $scope.user.group_id = [];
+            $scope.user.group = [];
+
             $scope.user.u_id = getStorage('user_id');
             $rootScope.service.post('groupList', $scope.user, function (res) {
                 $scope.groups = res.result;
+                console.log("GROUP");
+                console.log($scope.groups[0].g_name);
             });
 
 //            $scope.contacts = [{"displayName": "Test", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Kalpesh", "emails": [{value: "test1@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
@@ -959,16 +964,17 @@ angular.module('app.controllers', [])
             }
             $scope.user.name = [];
             $scope.contact = [];
-//            $scope.user.search = 'M';
+//            $scope.user.search = '';
 //            angular.forEach($scope.contacts, function (index, value) {
 //                if (index.displayName.indexOf($scope.user.search) == 0) {
 //                    $scope.contact.push(index);
 //                    value = $scope.contact.length - 1;
 //                    $scope.email[value] = index.emails[0].value;
 //                    $scope.user.name[value] = index.displayName;
+//
 //                }
 //            });
-            
+//            /console.log($scope.user.name);
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
@@ -986,7 +992,7 @@ angular.module('app.controllers', [])
                     }, 2000);
                     $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
                         $scope.contacts = contactsFound;
-						$scope.contact = [];
+                        $scope.contact = [];
 //                        angular.forEach( $scope.contacts , function (index, value) {
 ////                            if (index.displayName.indexOf($scope.user.search) > -1) {
 //                                $scope.email[value] = index.emails[0].value;
@@ -994,14 +1000,14 @@ angular.module('app.controllers', [])
 ////                                $scope.contacts.push(index);
 ////                            }
 //                        });
-                        angular.forEach($scope.contacts, function (index, value) {                            
-                            if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0 ) {
+                        angular.forEach($scope.contacts, function (index, value) {
+                            if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
                                 $scope.contact.push(index);
                                 value = $scope.contact.length - 1;
                                 $scope.email[value] = index.emails[0].value;
                                 $scope.user.name[value] = index.displayName;
                             }
-                        });                        
+                        });
                         $scope.contacts = $scope.contact;
                     });
                 } else {
@@ -1014,53 +1020,26 @@ angular.module('app.controllers', [])
                 if ($scope.email[index] === val) {
                     $scope.email.splice(index, 1);
                     $scope.user.name.splice(index, 1);
+                    $scope.user.group_id.splice(index, 1);
+                    $scope.user.group.splice(index, 1);
                 } else {
                     $scope.email.push(val);
                 }
             }
             $scope.user.email = $scope.email;
             $scope.sendInvitation = function () {
-                console.log($scope.user.name);
-                var myPopup = $ionicPopup.show({
-                    templateUrl: 'templates/templates/send_invitation_popup.html',
-                    title: 'Send Invitation',
-                    scope: $scope,
-                    cssClass: 'send-container',
-                    buttons: [
-                        {text: 'Cancel', type: "button-danger"},
-                        {
-                            text: '<b>Send</b>',
-                            type: 'button-positive ',
-                            onTap: function (e) {
-                                if (!$scope.user.name) {
-                                    e.preventDefault();
-                                    alert("Please Eneter Name.")
-                                } else {
-                                    if (!$scope.user.group_id) {
-                                        $scope.user.group_id = group_id;
-                                    }
-                                    if ($scope.user.group_id == 1) {
-                                        $scope.user.group_id = $scope.user.group;
-                                    }
-                                    $scope.showLoading();
-                                    $scope.user.u_id = getStorage('user_id');
-                                    $rootScope.service.post('sendMultipleInvitation', $scope.user, function (res) {
-                                        $scope.hideLoading();
-                                        if (res.status == 1) {
-                                            alert(res.message);
-                                            $state.go($state.current, {}, {reload: true});
+                $scope.showLoading();
+                $scope.user.u_id = getStorage('user_id');
+                $rootScope.service.post('sendMultipleInvitation', $scope.user, function (res) {
+                    $scope.hideLoading();
+                    if (res.status == 1) {
+                        alert(res.message);
+                        $state.go($state.current, {}, {reload: true});
 
-                                        } else {
-                                            $scope.valid = 0;
-                                            alert(res.message);
-                                        }
-                                    });
-                                    if ($scope.valid == 0)
-                                        e.preventDefault();
-                                }
-                            }
-                        },
-                    ]
+                    } else {
+                        $scope.valid = 0;
+                        alert(res.message);
+                    }
                 });
             };
 
