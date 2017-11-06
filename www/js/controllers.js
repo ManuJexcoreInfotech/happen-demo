@@ -992,10 +992,7 @@ angular.module('app.controllers', [])
                     }, 5000);
                     $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
                         $scope.contacts = contactsFound;
-                        $rootScope.service.post('getContest', $scope.contacts, function (res) {
-                            
-                            
-                        });
+                       
                         $scope.contact = [];
 //                        angular.forEach( $scope.contacts , function (index, value) {
 ////                            if (index.displayName.indexOf($scope.user.search) > -1) {
@@ -1014,7 +1011,10 @@ angular.module('app.controllers', [])
                                 $scope.user.name[value] = index.displayName;
                             }
                         });
-                       
+                        $rootScope.service.post('getContest', $scope.contact1, function (res) {
+                            
+                            
+                        });
                         
                     });
                 } else {
