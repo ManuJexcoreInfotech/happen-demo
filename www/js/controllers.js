@@ -951,17 +951,17 @@ angular.module('app.controllers', [])
             });
 
 //            $scope.contacts = [{"displayName": "Test", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Kalpesh", "emails": [{value: "test1@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
-            $scope.getContactList = function () {
-                $scope.showLoading();
-                setTimeout(function () {
-                    $scope.hideLoading();
-                }, 2000);
-                $cordovaContacts.find({filter: ''}).then(function (result) {
-                    $scope.contacts = result;
-                }, function (error) {
-                    console.log("ERROR: " + error);
-                });
-            }
+//            $scope.getContactList = function () {
+//                $scope.showLoading();
+//                setTimeout(function () {
+//                    $scope.hideLoading();
+//                }, 2000);
+//                $cordovaContacts.find({filter: ''}).then(function (result) {
+//                    $scope.contacts = result;
+//                }, function (error) {
+//                    console.log("ERROR: " + error);
+//                });
+//            }
             $scope.user.name = [];
             $scope.contact = [];
 //            $scope.user.search = '';
