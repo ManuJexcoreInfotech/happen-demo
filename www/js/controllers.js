@@ -1009,8 +1009,7 @@ angular.module('app.controllers', [])
                                 $scope.user.name[value] = index.displayName;
                             }
                         });
-                        $scope.contacts = [];
-                        $scope.contacts = $scope.contact;
+                        $scope.contacts1 = $scope.contact;
                     });
                 } else {
                     $scope.required = 1;
