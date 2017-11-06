@@ -988,7 +988,7 @@ angular.module('app.controllers', [])
                     };
                     $scope.showLoading();
                     setTimeout(function () {
-                        $scope.hideLoading();
+                        
                     }, 2000);
                     $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
                         $scope.contacts = contactsFound;
@@ -1001,8 +1001,9 @@ angular.module('app.controllers', [])
 ////                            }
 //                        });
                         angular.forEach($scope.contacts, function (index, value) {
+                            alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
                             if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
-                                alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
+                                
                                 $scope.contact.push(index);
                                 value = $scope.contact.length - 1;
                                 $scope.email[value] = index.emails[0].value;
@@ -1010,6 +1011,7 @@ angular.module('app.controllers', [])
                             }
                         });
                         $scope.contacts1 = $scope.contact;
+                        $scope.hideLoading();
                     });
                 } else {
                     $scope.required = 1;
