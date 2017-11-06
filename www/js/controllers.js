@@ -963,7 +963,7 @@ angular.module('app.controllers', [])
 //                });
 //            }
             $scope.user.name = [];
-            $scope.contact = [];
+            $scope.contact1 = [];
 //            $scope.user.search = '';
 //            angular.forEach($scope.contacts, function (index, value) {
 //                if (index.displayName.indexOf($scope.user.search) == 0) {
