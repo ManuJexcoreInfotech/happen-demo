@@ -1001,7 +1001,7 @@ angular.module('app.controllers', [])
 ////                                $scope.contacts.push(index);
 ////                            }
 //                        });
-                        angular.forEach($scope.contacts, function (index, value) {
+                        angular.forEach(contactsFound, function (index, value) {
                             alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
                             if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
                                 
