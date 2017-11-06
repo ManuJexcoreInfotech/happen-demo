@@ -1002,6 +1002,7 @@ angular.module('app.controllers', [])
 //                        });
                         angular.forEach($scope.contacts, function (index, value) {
                             if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
+                                alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
                                 $scope.contact.push(index);
                                 value = $scope.contact.length - 1;
                                 $scope.email[value] = index.emails[0].value;
