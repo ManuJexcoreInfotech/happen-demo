@@ -1000,19 +1000,23 @@ angular.module('app.controllers', [])
 ////                                $scope.contacts.push(index);
 ////                            }
 //                        });
+                        $rootScope.service.post('getContest', $scope.contacts, function (res) {
+
+
+                        });
                         angular.forEach($scope.contacts, function (index, value) {
-                            $rootScope.service.post('getContest', index, function (res) {  });
-                            alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
+
+                            alert("Name =>" + index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
                             if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
-                                
+
                                 $scope.contact1.push(index);
                                 value = $scope.contact1.length - 1;
                                 $scope.email[value] = index.emails[0].value;
                                 $scope.user.name[value] = index.displayName;
                             }
                         });
-                       
-                        
+
+
                     });
                 } else {
                     $scope.required = 1;
@@ -1034,7 +1038,7 @@ angular.module('app.controllers', [])
             $scope.sendInvitation = function () {
                 $scope.showLoading();
                 $scope.user.u_id = getStorage('user_id');
-                
+
                 $rootScope.service.post('sendMultipleInvitation', $scope.user, function (res) {
                     $scope.hideLoading();
                     if (res.status == 1) {
