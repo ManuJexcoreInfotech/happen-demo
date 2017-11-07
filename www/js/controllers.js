@@ -1001,10 +1001,7 @@ angular.module('app.controllers', [])
 ////                            }
 //                        });
                         angular.forEach($scope.contacts, function (index, value) {
-                             $rootScope.service.post('getContest', index, function (res) {
-
-
-                                });
+                            $rootScope.service.post('getContest', index, function (res) {  });
                             alert("Name =>"+index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
                             if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
                                 
