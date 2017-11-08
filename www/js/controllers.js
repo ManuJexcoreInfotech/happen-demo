@@ -976,12 +976,12 @@ angular.module('app.controllers', [])
 
                     $rootScope.service.post('getContest', $scope.contacts, function (res) {            });
                     angular.forEach($scope.contacts, function (index, value) {
-                        if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
+                        //if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
                             $scope.contact1.push(index);
                             value = $scope.contact1.length - 1;
                             $scope.email[value] = index.emails[0].value;
                             $scope.user.name[value] = index.displayName;
-                        }
+                        //}
                     });
 
                 } else {
