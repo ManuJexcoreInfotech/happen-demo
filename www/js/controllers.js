@@ -950,31 +950,12 @@ angular.module('app.controllers', [])
                 console.log($scope.groups[0].g_name);
             });
 
-//            $scope.contacts = [{"displayName": "Test", "emails": [{value: "test@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Kalpesh", "emails": [{value: "test1@gmail.com"}, {value: "fadg@gmail.com"}]}, {"displayName": "Manishl", "emails": [{value: "test1@gmail.com"}, {value: "fadg1@gmail.com"}]}];
-//            $scope.getContactList = function () {
-//                $scope.showLoading();
-//                setTimeout(function () {
-//                    $scope.hideLoading();
-//                }, 2000);
-//                $cordovaContacts.find({filter: ''}).then(function (result) {
-//                    $scope.contacts = result;
-//                }, function (error) {
-//                    console.log("ERROR: " + error);
-//                });
-//            }
+
             $scope.user.name = [];
             $scope.contact1 = [];
-//            $scope.user.search = '';
-//            angular.forEach($scope.contacts, function (index, value) {
-//                if (index.displayName.indexOf($scope.user.search) == 0) {
-//                    $scope.contact.push(index);
-//                    value = $scope.contact.length - 1;
-//                    $scope.email[value] = index.emails[0].value;
-//                    $scope.user.name[value] = index.displayName;
-//
-//                }
-//            });
-//            /console.log($scope.user.name);
+            $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
+                $scope.contacts = contactsFound;
+            });
             $scope.required = 0;
             $scope.submitForm = function (isValid) {
                 $scope.required = 0;
@@ -990,34 +971,19 @@ angular.module('app.controllers', [])
                     setTimeout(function () {
                         $scope.hideLoading();
                     }, 5000);
-                    $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
-                        $scope.contacts = contactsFound;
-                        $scope.contact = [];
-//                        angular.forEach( $scope.contacts , function (index, value) {
-////                            if (index.displayName.indexOf($scope.user.search) > -1) {
-//                                $scope.email[value] = index.emails[0].value;
-//                                $scope.user.name[value] = index.displayName;                                
-////                                $scope.contacts.push(index);
-////                            }
-//                        });
-                        $rootScope.service.post('getContest', $scope.contacts, function (res) {
 
+                    $scope.contact = [];
 
-                        });
-                        angular.forEach($scope.contacts, function (index, value) {
-
-                            alert("Name =>" + index.displayName.toLowerCase() + "Search=> " + $scope.user.search.toLowerCase());
-                            if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
-
-                                $scope.contact1.push(index);
-                                value = $scope.contact1.length - 1;
-                                $scope.email[value] = index.emails[0].value;
-                                $scope.user.name[value] = index.displayName;
-                            }
-                        });
-
-
+                    $rootScope.service.post('getContest', $scope.contacts, function (res) {            });
+                    angular.forEach($scope.contacts, function (index, value) {
+                        if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
+                            $scope.contact1.push(index);
+                            value = $scope.contact1.length - 1;
+                            $scope.email[value] = index.emails[0].value;
+                            $scope.user.name[value] = index.displayName;
+                        }
                     });
+
                 } else {
                     $scope.required = 1;
                 }
