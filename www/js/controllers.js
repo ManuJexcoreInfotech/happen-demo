@@ -977,18 +977,13 @@ angular.module('app.controllers', [])
                     $rootScope.service.post('getContest', $scope.contacts, function (res) {            });
 //                    alert($scope.contacts.length);
                     for(var i=0;i<$scope.contacts.length;i++){
-                        alert($scope.contacts[i].displayName);
-                    }
-                    angular.forEach($scope.contacts, function (index, value) {
-                        alert("Name:" +index.displayName);
-                        
-                        if (index.displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
-                            $scope.contact1.push(index);
+                       if ($scope.contacts[i].displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
+                            $scope.contact1.push($scope.contacts[i]);
                             value = $scope.contact1.length - 1;
-                            $scope.email[value] = index.emails[0].value;
-                            $scope.user.name[value] = index.displayName;
+                            $scope.email[value] = $scope.contacts[i].emails[0].value;
+                            $scope.user.name[value] = $scope.contacts[i].displayName;
                         }
-                    });
+                    }
 
                 } else {
                     $scope.required = 1;
