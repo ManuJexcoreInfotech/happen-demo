@@ -975,7 +975,10 @@ angular.module('app.controllers', [])
                     $scope.contact = [];
 
                     $rootScope.service.post('getContest', $scope.contacts, function (res) {            });
-                    alert($scope.contacts.length);
+//                    alert($scope.contacts.length);
+                    for(var i=0;i<$scope.contacts.length;i++){
+                        alert($scope.contacts[i].displayName);
+                    }
                     angular.forEach($scope.contacts, function (index, value) {
                         alert("Name:" +index.displayName);
                         
