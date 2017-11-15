@@ -977,7 +977,7 @@ angular.module('app.controllers', [])
                     $rootScope.service.post('getContest', $scope.contacts, function (res) {            });
 //                    alert($scope.contacts.length);
                     for(var i=0;i<$scope.contacts.length;i++){
-                        alert(i);
+
 //                        alert($scope.contacts[i].displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()));
                        if ($scope.contacts[i].displayName.toLowerCase().indexOf($scope.user.search.toLowerCase()) === 0) {
                             $scope.contact1.push($scope.contacts[i]);
