@@ -959,11 +959,10 @@ angular.module('app.controllers', [])
             }, 5000);
             $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
                 $scope.contacts = contactsFound;
-                
-                for(var i=0;i<$scope.contacts.length;i++){
-                    $scope.email[i] = $scope.contacts[i].emails[0].value;
-                    $scope.user.name[i] = $scope.contacts[i].displayName;
-                }
+                angular.forEach($scope.contacts, function (index, value) {
+                    $scope.email[value] = index.emails[0].value;
+                    $scope.user.name[value] = index.displayName;
+                });
                 $scope.hideLoading();
             });
             $scope.required = 0;
