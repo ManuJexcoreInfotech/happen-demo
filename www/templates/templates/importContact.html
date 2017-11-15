@@ -28,8 +28,8 @@
                 <div class="col">Email</div>                   
                 <div class="col col-25" style="min-width:50px;max-width:50px;"></div>                    
             </div>
-            <div  ng-repeat="(index,contact) in contacts | filter:user.search ">
-                <div class="row " ng-show="contact.emails.length > 0">
+            <div  ng-repeat="(index,contact) in contacts | filter:user.search " >
+                <div class="row " ng-show="contact.emails.length > 0" ng-init="user.name[index] = contact.displayName">
                     <div class="col" ng-model="user.name[index]">{{contact.displayName}}</div>
                     <div class="col" ><a ng-hide="!userser"  ></a><input type="text" name="text[]" ng-model="user.name[index]"  /></div>
                     <div class="col" >
