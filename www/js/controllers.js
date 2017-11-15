@@ -954,12 +954,15 @@ angular.module('app.controllers', [])
             $scope.user.name = [];
             $scope.contact1 = [];
             $scope.showLoading();
+            setTimeout(function () {
+                $scope.hideLoading();
+            }, 5000);
             $cordovaContacts.find({filter: ''}).then(function (contactsFound) {
                 $scope.contacts = contactsFound;
                 
                 for(var i=0;i<$scope.contacts.length;i++){
-                    $scope.email[value] = $scope.contacts[i].emails[0].value;
-                    $scope.user.name[value] = $scope.contacts[i].displayName;
+                    $scope.email[i] = $scope.contacts[i].emails[0].value;
+                    $scope.user.name[i] = $scope.contacts[i].displayName;
                 }
                 $scope.hideLoading();
             });
