@@ -4,7 +4,7 @@ window.Config = {
     isRelease: true,
     debug: true,
 
-    baseUrl: 'http://192.168.56.1/code/happenstance/',
+    baseUrl: 'http://pr.veba.co/~shubantech/travel_gym/',
   //  baseUrl: 'http://18.221.0.116/admin/',
 //    baseUrl: 'http://pr.veba.co/~shubantech/happenstance/',
 
