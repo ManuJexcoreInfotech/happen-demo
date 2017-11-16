@@ -339,17 +339,30 @@ angular.module('app', [
             }
         })
         .filter('startsWithLetter', function () {
-            return function (items, letter) {
-                var filtered = [];
-                var letterMatch = new RegExp(letter, 'i');
-                for (var i = 0; i < items.length; i++) {
-                    var item = items[i];
-                    if (letterMatch.test(item.displayName.substring(0, 1))) {
-                        filtered.push(item);
-                    }
-                }
-                return filtered;
+            return function (names, keyword) {
+                var listToReturn = [];
+                if (keyword === undefined)
+                    return names;
+                var keywords = keyword.toLowerCase().split(' ');
+                angular.forEach(names, function (name) {
+                        if (name.displayName.toLowerCase().indexOf(keywords) == 0) {
+                            listToReturn.push(name);
+                        }
+                });
+                return listToReturn;
             };
+//            return function (items, letter) {
+//                var filtered = [];
+//                var letterMatch = new RegExp(letter, 'i');
+//                for (var i = 0; i < items.length; i++) {
+//                    var item = items[i];
+//                    if (letterMatch.test(item.displayName.substring(0, 1))) {
+//                        filtered.push(item);
+//                    }
+//                }
+//                return filtered;
+//            };
+
         })
         .factory('myService', function ($rootScope, $scope) {
 
