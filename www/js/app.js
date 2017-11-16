@@ -269,7 +269,7 @@ angular.module('app', [
                             }
                         }
                     })
-					.state('app.importcontact', {
+                    .state('app.importcontact', {
                         url: "/importcontact",
                         cache: false,
                         views: {
@@ -337,6 +337,19 @@ angular.module('app', [
             return function (input) {
                 return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
             }
+        })
+        .filter('startsWithLetter', function () {
+            return function (items, letter) {
+                var filtered = [];
+                var letterMatch = new RegExp(letter, 'i');
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    if (letterMatch.test(item.name.substring(0, 1))) {
+                        filtered.push(item);
+                    }
+                }
+                return filtered;
+            };
         })
         .factory('myService', function ($rootScope, $scope) {
 
